@@ -1,3 +1,4 @@
+# BETA
 # For Developers:
 ### New Packs should be similar to the current packs, especially the origin three packs, COLD WORM AND DEEP. 
 ### All power images should be named to the same format, so are the power classes, for example, "XyzDescentXyz"
