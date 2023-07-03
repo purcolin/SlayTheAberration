@@ -1,0 +1,64 @@
+{
+  "aberration:ColdDescentMonsterPower": {
+    "NAME": "寒裔",
+    "DESCRIPTIONS": [
+      "它拥抱冰冷，成为了寒裔。\n寒裔：每次攻击时给予等同于造成伤害层数的 寒冷 "
+    ]
+  },
+  "aberration:ColdDescentColdPower": {
+    "NAME": "寒冷",
+    "DESCRIPTIONS": [
+      "下次攻击的伤害减少","点并失去一点寒冷 NL 回合开始时层数减半"
+    ]
+  },
+
+  "aberration:ColdDescentBossPower": {
+    "NAME": "寒灾之源",
+    "DESCRIPTIONS": [
+      "被“寒灾”凛冬本源力量感染的畸变怪物。 NL 每次受到攻击时给予2层 寒冷 ,"
+    ]
+  },
+  "aberration:WormDescentWormLarvaPower": {
+    "NAME": "幼虫",
+    "DESCRIPTIONS": [
+      "“虫群的仇恨，生生不息”\n死亡时，场上每有一具尸体，对你造成一点伤害\n"
+    ]
+  },
+  "aberration:WormDescentMonsterPower": {
+    "NAME": "虫群",
+    "DESCRIPTIONS": [
+      "半血时将每个敌人转化为两只幼虫，转换前清除正面状态\n"
+    ]
+  },
+  "aberration:WormDescentBossPower": {
+    "NAME": "虫族之母",
+    "DESCRIPTIONS": [
+      "被“虫母”妃阿聂力量感染的畸变怪物。\n每次收到大于每血量1/15的伤害(每","点）时分裂一只幼虫，每三回合分裂一只幼虫"
+    ]
+  },
+  "aberration:DeepDescentMonsterPower": {
+  "NAME": "深渊",
+  "DESCRIPTIONS": [
+    "攻击若造成伤害，则给予一层吞噬\n"
+  ]
+},
+  "aberration:DeepDescentBossPower": {
+    "NAME": "深层狱渊",
+    "DESCRIPTIONS": [
+      "被“狱渊”撒旦力量感染的畸变怪物。\n每当玩家有不同类别的牌被消耗时，获得三点力量","深渊在吞噬你"
+    ]
+  },
+  "aberration:DeepDescentDeepEyedPower": {
+    "NAME": "深渊凝视",
+    "DESCRIPTIONS": [
+      "深渊觊觎着你的力量。\n","深渊在吞噬你"
+    ]
+  },
+  "aberration:DeepDescentDeepPower": {
+    "NAME": "吞噬",
+    "DESCRIPTIONS": [
+      "“深渊正在缓慢吞噬你”\n你打出的下一张非消耗牌打出后消耗\n"
+    ]
+  }
+}
+

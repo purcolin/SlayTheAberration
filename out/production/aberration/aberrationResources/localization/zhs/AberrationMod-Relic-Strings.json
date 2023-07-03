@@ -1,0 +1,18 @@
+{
+  "aberration:Injector": {
+    "NAME": "注射器",
+    "FLAVOR": "\"这是什么？来一根\" - 丁真。",
+    "DESCRIPTIONS": [
+      "拥有的数量：",
+      "。\n已使用："
+    ]
+  },
+  "aberration:AberrationGene": {
+    "NAME": "畸变基因",
+    "FLAVOR": "战胜它们，成为它们。",
+    "DESCRIPTIONS": [
+      "当前拥有的基因：。",
+      "当前没有畸变基因，你是安全的"
+    ]
+  }
+}

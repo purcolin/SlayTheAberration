@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="aberration:jar">
+    <output-path>$PROJECT_DIR$/../../../../SteamLibrary/steamapps/common/SlayTheSpire/mods</output-path>
+    <root id="archive" name="aberration.jar">
+      <element id="dir-copy" path="$PROJECT_DIR$/out/production/aberration" />
+    </root>
+  </artifact>
+</component>

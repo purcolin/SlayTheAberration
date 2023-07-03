@@ -1,0 +1,11 @@
+{
+  "aberration:WormLarva": {
+    "NAME": "幼虫",
+    "MOVES": [
+      "吐网"
+    ],
+    "DIALOG": [
+      "打断！"
+    ]
+  }
+}

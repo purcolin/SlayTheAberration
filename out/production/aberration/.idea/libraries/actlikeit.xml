@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="actlikeit">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../lib/actlikeit.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

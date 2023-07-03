@@ -1,0 +1,32 @@
+{
+  "aberration:ColdCard": {
+    "TEXT": ["寒裔", "", "造成伤害时给予等同于造成伤害层数的寒冷。"]
+  },
+  "aberration:ColdDescentGene": {
+    "TEXT": ["寒裔基因", "每次造成伤害时，生成伤害数1/9的冰球\n"]
+  },
+  "aberration:ColdDescentPack": {
+    "TEXT": ["寒灾：寒裔", "“寒灾”凛冬的子嗣，万物都将在极寒中冻结","purcolin"]
+  },
+  "aberration:WormCard": {
+    "TEXT": ["虫群", "", "每有一名血量低于一半或20的敌人，额外生效一次 NL 消耗"]
+  },
+  "aberration:WormDescentGene": {
+    "TEXT": ["虫群基因", "获得两只虫卵。每次战斗开始以及血量降低到0以下时，消耗一只虫卵并使血量回复至上限的一半，每次杀死敌人增加一只虫卵。 NL “所有虫族现在将你视为手足”","当前拥有的虫卵数："]
+  },
+  "aberration:WormDescentPack": {
+    "TEXT": ["虫灾：虫群", "“虫母”妃阿聂的子嗣。回归虫群，是世间一切的宿命","purcolin"]
+  },
+  "aberration:DeepCard": {
+    "TEXT": ["深渊", "", "给予随机敌人一层吞噬 NL 消耗"]
+  },
+  "aberration:DeepDescentGene": {
+    "TEXT": ["深渊基因", "每有敌人血量降低其上限的一半时，获得一点力量、敏捷与集中"]
+  },
+  "aberration:DeepDescentPack": {
+    "TEXT": ["渊泉：深渊", "“狱渊”撒旦的子嗣。坠入深渊！","purcolin"]
+  },
+  "aberration:MapLegendPatch": {
+    "TEXT": ["畸变", "畸变","这些怪物经历了什么，邪恶的气息扑面而来"]
+  }
+}

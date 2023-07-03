@@ -1,0 +1,10 @@
+{
+  "modid": "aberration",
+  "name": "aberration",
+  "author_list": ["purcolin"],
+  "description": "Purcolin's first mod!",
+  "version": "1.0.0",
+  "sts_version": "12-18-2022",
+  "mts_version": "3.30.3",
+  "dependencies": ["basemod","stslib"]
+}
