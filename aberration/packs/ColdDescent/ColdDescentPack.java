@@ -2,6 +2,7 @@ package aberration.packs.ColdDescent;
 
 import aberration.AberrationMod;
 import aberration.packs.AbstractAberrationPack;
+import aberration.utils.TextureLoader;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -9,6 +10,8 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import static aberration.AberrationMod.makePowerPath;
 
 public class ColdDescentPack extends AbstractAberrationPack{
     public static final Logger logger = LogManager.getLogger(ColdDescentPack.class.getName());
@@ -26,6 +29,7 @@ public class ColdDescentPack extends AbstractAberrationPack{
         }
         this.card = new ColdCard();
         this.gene = new ColdDescentGene();
+        this.bossImage = TextureLoader.getTexture((makePowerPath("ColdDescentColdBoss.png")));
     }
     public void ApplyMonsterPower(AbstractMonster m){
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ColdDescentMonsterPower(m, m, 1)));

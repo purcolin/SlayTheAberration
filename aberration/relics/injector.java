@@ -35,7 +35,7 @@ public class injector extends CustomRelic implements CustomSavable<Integer> {
 
     private int bloodFrom = 0;
 
-    private boolean isTrigged = false;
+    public boolean isTrigged = false;
     public static final Logger logger = LogManager.getLogger(injector.class.getName());
 
 
@@ -51,6 +51,7 @@ public class injector extends CustomRelic implements CustomSavable<Integer> {
 
     @Override
     public void onEquip() {
+        this.isTrigged = false;
         this.description = getUpdatedDescription();
     }
     @Override
@@ -61,7 +62,6 @@ public class injector extends CustomRelic implements CustomSavable<Integer> {
             AbstractDungeon.overlayMenu.cancelButton.hide();
             AbstractDungeon.previousScreen = AbstractDungeon.screen;
         }
-        AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.INCOMPLETE;
         CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
         while(var1.hasNext()) {
@@ -92,10 +92,6 @@ public class injector extends CustomRelic implements CustomSavable<Integer> {
             AbstractCard card = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
             CardModifierManager.addModifier(card, AberrationMod.CurrentAberrationPacks.get(bloodFrom).card);
             this.counter --;
-            if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.INCOMPLETE) {
-                AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
-            }
-            AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
             AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy()));
             AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect((float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
             AbstractDungeon.gridSelectScreen.selectedCards.clear();

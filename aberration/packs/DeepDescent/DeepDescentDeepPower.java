@@ -4,11 +4,16 @@ import aberration.AberrationMod;
 import aberration.utils.TextureLoader;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,12 +32,12 @@ public class DeepDescentDeepPower extends AbstractPower {
 
 
 
-    public DeepDescentDeepPower(AbstractCreature owner, AbstractCreature source, int coldAmt) {
+    public DeepDescentDeepPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.source = source;
-        this.amount = coldAmt;
+        this.amount = amount;
         if (this.amount >= 999) {
             this.amount = 999;
         }
@@ -58,7 +63,17 @@ public class DeepDescentDeepPower extends AbstractPower {
             action.exhaustCard = true;
 //            this.addToBot(new ExhaustSpecificCardAction(card,AbstractDung+++++++++++++++++++++++++++++++++++++++++++++++++++++++eon.player.hand));
         }
-        this.amount--;
+        this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
+
+    }
+
+    @Override
+    public void atEndOfRound(){
+        if(this.owner instanceof AbstractMonster){
+            logger.info(this.owner);
+            AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new RollMoveAction((AbstractMonster) this.owner));
+            this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
+        }
     }
 
 

@@ -107,7 +107,7 @@ public class AberrationMod implements PostInitializeSubscriber,
         logger.info("Full list of packs: " + allPacks.stream().map((pack) -> {
             return pack.name;
         }).collect(Collectors.toList()));
-        BaseMod.addCustomScreen(new AberrationShowScreen());
+//        BaseMod.addCustomScreen(new AberrationShowScreen());
 
 //        BaseMod.addEvent(new AddEventParams.Builder(AfterKill.ID, AfterKill.class).create());
 
@@ -153,8 +153,8 @@ public class AberrationMod implements PostInitializeSubscriber,
     @Override
     public void receivePostDungeonInitialize() {
         logger.info("receive post dungeon initialize");
-        AbstractDungeon.isScreenUp = true;
-        BaseMod.openCustomScreen(AberrationShowScreen.Enum.ABERRATION_SHOW_SCREEN, allPacks);
+//        AbstractDungeon.isScreenUp = true;
+//        BaseMod.openCustomScreen(AberrationShowScreen.Enum.ABERRATION_SHOW_SCREEN, allPacks);
 
     }
 

@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.ui.buttons.ProceedButton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -56,6 +57,7 @@ public class AberrationShowScreen extends CustomScreen {
     @Override
     public void reopen()
     {
+        AbstractDungeon.overlayMenu.showBlackScreen();
         AberrationMod.IsShowAberrationScreen = true;
         AbstractDungeon.screen = curScreen();
         AbstractDungeon.isScreenUp = true;
@@ -84,21 +86,18 @@ public class AberrationShowScreen extends CustomScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        sb.setColor(new Color(0.0F, 0.0F, 0.0F, 0.8F));
-        sb.draw(ImageMaster.WHITE_SQUARE_IMG, 0.0F, 0.0F, (float)Settings.WIDTH, (float)Settings.HEIGHT);
         sb.setColor(new Color(1.0F, 1.0F, 1.0F, 1.0F));
         FontHelper.renderFont(sb, FontHelper.prepFont(80.0F,false), "尖塔遴选了它的畸变", (float)Settings.WIDTH/2 -360.0F*Settings.scale,(float)Settings.HEIGHT - 190.0F*Settings.scale, Settings.CREAM_COLOR);
-//        logger.info(images.size());
         for(int i=0;i<images.size();i++){
             Texture t = images.get(i);
             Hitbox hb = hbs.get(i);
             sb.draw(t,x+i*400.0F* Settings.scale, (float)Settings.HEIGHT / 2.0F - 46.0F * Settings.scale - 433.5F* Settings.scale, 325.0F, 433.5F, 650.0F* Settings.scale, 867.0F* Settings.scale, Settings.xScale, Settings.scale, 0.0F, 0, 0, 650, 867, false, false);
-            FontHelper.renderFont(sb, FontHelper.prepFont(30.0F,false), AberrationMod.CurrentAberrationPacks.get(i).name, x+i*400.0F* Settings.scale,(float)Settings.HEIGHT / 2.0F - 46.0F * Settings.scale - 433.5F* Settings.scale, Settings.CREAM_COLOR);
             hb.render(sb);
             if (hb.hovered) {
                 sb.setBlendFunction(770, 1);
                 sb.setColor(new Color(1.0F, 1.0F, 1.0F, 0.3F));
                 sb.setBlendFunction(770, 771);
+                FontHelper.renderFont(sb, FontHelper.prepFont(40.0F,false), AberrationMod.CurrentAberrationPacks.get(i).name, x+i*400.0F* Settings.scale,(float)Settings.HEIGHT / 2.0F - 46.0F * Settings.scale - 433.5F* Settings.scale, Settings.CREAM_COLOR);
             }
 
         }

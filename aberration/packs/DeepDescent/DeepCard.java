@@ -6,6 +6,7 @@ import aberration.actions.RemoveMoveAction;
 import aberration.packs.AbstractInjectedCard;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.TooltipInfo;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
