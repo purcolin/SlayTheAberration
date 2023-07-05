@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -60,8 +61,9 @@ public class DeepCard extends AbstractInjectedCard {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        logger.info("deep!");
-        AbstractDungeon.actionManager.addToBottom(new RemoveMoveAction(AbstractDungeon.getRandomMonster()));
+        AbstractMonster monster= AbstractDungeon.getRandomMonster();
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster,AbstractDungeon.player,new DeepDescentDeepPower(monster, AbstractDungeon.player,1)));
+
     }
     @Override
     public AbstractCardModifier makeCopy() {

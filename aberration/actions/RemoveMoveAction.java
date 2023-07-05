@@ -19,9 +19,9 @@ public class RemoveMoveAction extends AbstractGameAction {
 
     public void update() {
         this.monster.setMove("被吞噬",(byte)-1, AbstractMonster.Intent.STUN);
-        logger.info(this.monster.name);
-        this.monster.intent = AbstractMonster.Intent.STUN;
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.monster,AbstractDungeon.player,new DeepDescentDeepPower(this.monster, AbstractDungeon.player,1)));
+//        this.monster.intent = AbstractMonster.Intent.NONE;
+//        this.monster.nextMove = -1;
+        this.monster.createIntent();
         this.isDone = true;
     }
 }

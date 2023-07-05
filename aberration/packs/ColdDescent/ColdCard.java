@@ -28,6 +28,7 @@ public class ColdCard extends AbstractInjectedCard {
         return ID;
     }
 
+    @Override
     public void onInitialApplication(AbstractCard card) {
         DamageModifierManager.addModifier(card, new ColdCardDamage());
     }

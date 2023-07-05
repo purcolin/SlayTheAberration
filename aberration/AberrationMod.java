@@ -204,7 +204,7 @@ public class AberrationMod implements PostInitializeSubscriber,
         ab.SetRng(new Random(Settings.seed));
         logger.info("randompack:"+ getRandomPackFromAll(ab.AberrationRng).name);
         this.CurrentAberrationPacks = getNPacks(ab.AberrationRng,3);
-//        this.CurrentAberrationPacks.add(new ColdDescentPack());
+        this.CurrentAberrationPacks.add(new ColdDescentPack());
 //        this.CurrentAberrationPacks.add(new WormDescentPack());
 //        this.CurrentAberrationPacks.add(new DeepDescentPack());
         logger.info("Full list of packs: " + this.CurrentAberrationPacks.stream().map((pack) -> {

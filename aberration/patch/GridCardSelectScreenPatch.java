@@ -34,7 +34,8 @@ public class GridCardSelectScreenPatch {
     )
     public static SpireReturn<Void> Insert(GridCardSelectScreen __instance,AbstractCard ___hoveredCard,String[] ___TEXT) {
         logger.info("=========================  preview hook =========================");
-        if(AbstractDungeon.player.getRelic(injector.ID).checkTrigger()){
+        injector i = (injector) AbstractDungeon.player.getRelic(injector.ID);
+        if(i.isTrigged){
             CardModifierManager.addModifier(__instance.upgradePreviewCard, AberrationMod.CurrentAberrationPacks.get(AberrationMod.currentDungeon()).card);
             __instance.upgradePreviewCard.displayUpgrades();
             __instance.upgradePreviewCard.drawScale = 0.875F;

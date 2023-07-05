@@ -1,6 +1,7 @@
 package aberration.packs.DeepDescent;
 
 import aberration.AberrationMod;
+import aberration.actions.RemoveMoveAction;
 import aberration.utils.TextureLoader;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -27,6 +28,7 @@ public class DeepDescentDeepPower extends AbstractPower {
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
     private AbstractCreature source;
+    private Boolean tried = false;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(DeepDescentDeepPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(DeepDescentDeepPower.class.getSimpleName()+"32.png"));
 
@@ -59,23 +61,46 @@ public class DeepDescentDeepPower extends AbstractPower {
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if(this.amount>=1){
-            action.exhaustCard = true;
+        if(this.owner.isPlayer){
+            if(this.amount>0){
+                action.exhaustCard = true;
 //            this.addToBot(new ExhaustSpecificCardAction(card,AbstractDung+++++++++++++++++++++++++++++++++++++++++++++++++++++++eon.player.hand));
-        }
-        this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
-
-    }
-
-    @Override
-    public void atEndOfRound(){
-        if(this.owner instanceof AbstractMonster){
-            logger.info(this.owner);
-            AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new RollMoveAction((AbstractMonster) this.owner));
+            }
             this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
         }
     }
 
+    @Override
+    public void atStartOfTurn(){
+    }
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer){
+        if(!isPlayer){
+            logger.info("deep end!");
+            logger.info(this.owner);
+            logger.info(this.amount);
+            if(this.amount == 1){
+                logger.info(this.tried);
+                if(this.tried){
+                    this.addToBot(new RollMoveAction((AbstractMonster) this.owner));
+                    this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
+                    this.tried = false;
+                }else {
+                    this.addToBot(new RemoveMoveAction((AbstractMonster) this.owner));
+                    this.tried = true;
+                }
+            }else {
+                if (this.tried){
+
+                }
+                this.addToBot(new RemoveMoveAction((AbstractMonster) this.owner));
+                this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
+            }
+
+
+        }
+    }
 
     static {
         powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);

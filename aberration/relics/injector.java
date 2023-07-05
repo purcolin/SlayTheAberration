@@ -92,7 +92,7 @@ public class injector extends CustomRelic implements CustomSavable<Integer> {
             AbstractCard card = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
             CardModifierManager.addModifier(card, AberrationMod.CurrentAberrationPacks.get(bloodFrom).card);
             this.counter --;
-            AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy()));
+            AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(card));
             AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect((float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
             this.description = getUpdatedDescription();
