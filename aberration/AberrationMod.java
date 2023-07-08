@@ -207,10 +207,11 @@ public class AberrationMod implements PostInitializeSubscriber,
         this.CurrentAberrationPacks.add(new ColdDescentPack());
 //        this.CurrentAberrationPacks.add(new WormDescentPack());
 //        this.CurrentAberrationPacks.add(new DeepDescentPack());
-        logger.info("Full list of packs: " + this.CurrentAberrationPacks.stream().map((pack) -> {
+        logger.info("Full list of current packs: " + this.CurrentAberrationPacks.stream().map((pack) -> {
             return pack.name;
         }).collect(Collectors.toList()));
 
+        AbstractDungeon.player.getRelic(injector.ID).onEquip();
 
     }
 

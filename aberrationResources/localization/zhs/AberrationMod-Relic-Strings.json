@@ -3,8 +3,7 @@
     "NAME": "注射器",
     "FLAVOR": "\"这是什么？来一根\" - 丁真。",
     "DESCRIPTIONS": [
-      "拥有的数量：",
-      "。\n已使用："
+      "消耗以将畸变效果注入至卡牌中,每次击败boss增加1. NL 你感受到了畸变的气息: NL "
     ]
   },
   "aberration:AberrationGene": {

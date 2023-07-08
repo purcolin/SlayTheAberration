@@ -39,7 +39,7 @@ public class aberrationGene extends CustomRelic implements CustomSavable<ArrayLi
         }else {
             String d = DESCRIPTIONS[0];
             for(AbstractGene g: AberrationMod.geneList){
-                d += g.name+":\n"+g.description+"\n";
+                d += g.name+": NL "+g.description+" NL ";
             }
             this.description = d;
             this.tips.clear();

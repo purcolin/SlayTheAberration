@@ -1,6 +1,7 @@
 package aberration.relics;
 
 import aberration.AberrationMod;
+import aberration.packs.AbstractAberrationPack;
 import aberration.rewards.AberrationSource;
 import aberration.utils.TextureLoader;
 import basemod.abstracts.CustomRelic;
@@ -23,12 +24,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 import static com.megacrit.cardcrawl.helpers.ImageMaster.loadImage;
 
-public class injector extends CustomRelic implements CustomSavable<Integer> {
+//public class injector extends CustomRelic implements CustomSavable<Integer> {
+public class injector extends CustomRelic{
     public static final String ID = "aberration:Injector";
-    private static final int InjectorCost = 1;
+    private static final int cost = 1;
     private boolean cardSelected = true; // A boolean to indicate whether or not we selected a card for injecting.
 
 //    private int used = 0;
@@ -43,16 +46,25 @@ public class injector extends CustomRelic implements CustomSavable<Integer> {
         super(ID, TextureLoader.getTexture("aberrationResources/images/injector.png"), // you could create the texture in this class if you wanted too
                 RelicTier.STARTER, LandingSound.MAGICAL); // this relic is uncommon and sounds magic when you click it
         this.setCounter(2);
+        this.description = getUpdatedDescription();
     }
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0]+ this.counter; // DESCRIPTIONS pulls from your localization file
+        String var2 = DESCRIPTIONS[0];
+        for(AbstractAberrationPack p :AberrationMod.CurrentAberrationPacks){
+            logger.info(p.name);
+            var2+=(p.name+" NL ");
+        }
+        return var2; // DESCRIPTIONS pulls from your localization file
     }
 
     @Override
     public void onEquip() {
         this.isTrigged = false;
         this.description = getUpdatedDescription();
+        this.tips.clear();
+        this.tips.add(new PowerTip(this.name, this.description));
+        this.initializeTips();
     }
     @Override
     public void onTrigger() {
@@ -91,7 +103,7 @@ public class injector extends CustomRelic implements CustomSavable<Integer> {
             cardSelected = true;
             AbstractCard card = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
             CardModifierManager.addModifier(card, AberrationMod.CurrentAberrationPacks.get(bloodFrom).card);
-            this.counter --;
+            this.setCounter(this.counter - this.cost);
             AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(card));
             AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect((float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
@@ -115,7 +127,7 @@ public class injector extends CustomRelic implements CustomSavable<Integer> {
         if(AberrationMod.CurrentRoomType == AbstractRoom.RoomType.BOSS){
             AbstractPlayer p = AbstractDungeon.player;
             this.addToTop(new RelicAboveCreatureAction(p, this));
-            this.counter +=1;
+            this.setCounter(this.counter + 1);
             this.description = getUpdatedDescription();
             this.tips.clear();
             this.tips.add(new PowerTip(this.name, this.description));
@@ -131,13 +143,13 @@ public class injector extends CustomRelic implements CustomSavable<Integer> {
     public void onMonsterDeath(AbstractMonster m) {
     }
 
-    @Override
-    public Integer onSave() {
-        return this.counter;
-    }
-
-    @Override
-    public void onLoad(Integer integer) {
-        this.counter = integer;
-    }
+//    @Override
+//    public Integer onSave() {
+//        return this.counter;
+//    }
+//
+//    @Override
+//    public void onLoad(Integer integer) {
+//        this.counter = integer;
+//    }
 }

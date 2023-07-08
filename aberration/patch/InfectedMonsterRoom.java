@@ -2,6 +2,7 @@ package aberration.patch;
 import aberration.relics.injector;
 import aberration.rewards.InfectedBlood;
 import aberration.utils.AberrationHooks;
+import basemod.BaseMod;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.EnableEndTurnButtonAction;
@@ -113,6 +114,7 @@ public class InfectedMonsterRoom extends MonsterRoom {
 //                        logger.info(AbstractRoomInfectedPatch.infected.get(this));
                         AberrationHooks ah = new AberrationHooks();
                         ah.PreStartBattle(this);
+                        BaseMod.publishStartBattle(this);
                         AbstractDungeon.player.applyStartOfCombatPreDrawLogic();
                         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, AbstractDungeon.player.gameHandSize));
                         AbstractDungeon.actionManager.addToBottom(new EnableEndTurnButtonAction());
