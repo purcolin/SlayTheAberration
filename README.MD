@@ -8,4 +8,5 @@
 * ### BossPower(extending AbstractPower by basemod), 
 * ### MonsterPower(Likely to the pre one)
 * ### gene(Extending AbstractGene). 
+* ### Resources, including a folder named "**Descent" with images named with prefix "**Descent", each language should have a localization file being Json format including all the strings.
 # For further connection to me, please send message to Purcolin@163.com

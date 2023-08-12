@@ -1,12 +1,16 @@
 package aberration.commands;
 
+import aberration.AberrationMod;
 import aberration.packs.ColdDescent.ColdDescentPack;
 import basemod.devcommands.ConsoleCommand;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import org.lwjgl.Sys;
+
+import java.util.ArrayList;
 
 public class AberrationGeneAdd extends ConsoleCommand {
     public AberrationGeneAdd() {
-        maxExtraTokens = 0; //How many additional words can come after this one. If unspecified, maxExtraTokens = 1.
+        maxExtraTokens = 1; //How many additional words can come after this one. If unspecified, maxExtraTokens = 1.
         minExtraTokens = 0; //How many additional words have to come after this one. If unspecified, minExtraTokens = 0.
         requiresPlayer = true; //if true, means the command can only be executed if during a run. If unspecified, requiresplayer = false.
         /**
@@ -21,10 +25,25 @@ public class AberrationGeneAdd extends ConsoleCommand {
     }
 
     @Override
-    protected void execute(String[] strings, int i) {
-        ColdDescentPack a = new ColdDescentPack();
-        a.ApplyGene(AbstractDungeon.player);
+    protected void execute(String[] tokens, int depth) {
+        AberrationMod.packsByID.get(tokens[depth]).ApplyGene(AbstractDungeon.player);
+    }
 
+    @Override
+    public ArrayList<String> extraOptions(String[] tokens, int depth) {
+        ArrayList<String> result = new ArrayList<>();
+        for (String i : AberrationMod.packsByID.keySet()) {
+            result.add(i);
+        }
 
+        if(result.contains(tokens[depth])) {
+            complete = true;
+            /**
+             * Setting complete to true displays "Command is complete" in the autocomplete window.
+             * This is not necessary if "simplecheck = true" in the constructor and you don't have additional logic for it!
+             */
+        }
+
+        return result;
     }
 }

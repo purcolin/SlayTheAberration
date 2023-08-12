@@ -26,11 +26,6 @@ public class DeepDescentGene extends AbstractGene implements CustomSavable<Integ
     }
 
     @Override
-    public void onEquip(AbstractRelic r){
-        this.WormCount = 2;
-    }
-
-    @Override
     public void onMonsterDeath(AbstractMonster m,AbstractRelic r) {
         this.addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new StrengthPower(AbstractDungeon.player,1)));
         this.addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DexterityPower(AbstractDungeon.player,1)));

@@ -4,6 +4,7 @@ import aberration.packs.AbstractAberrationPack;
 import aberration.packs.AbstractGene;
 import aberration.packs.ColdDescent.ColdDescentPack;
 import aberration.packs.DeepDescent.DeepDescentPack;
+import aberration.packs.Void.VoidPack;
 import aberration.packs.WormDescent.WormDescentBossPower;
 import aberration.packs.WormDescent.WormDescentPack;
 import aberration.screens.AberrationShowScreen;
@@ -96,6 +97,7 @@ public class AberrationMod implements PostInitializeSubscriber,
     public static void initialize() {
         logger.info("========================= Initializing Aberration. =========================");
         new AberrationMod();
+//        Settings.isDebug= true;
         logger.info("========================= Aberration Initialized   =========================");
 
     }
@@ -167,8 +169,9 @@ public class AberrationMod implements PostInitializeSubscriber,
             while(var1.hasNext()) {
                 AbstractMonster m = (AbstractMonster)var1.next();
                 logger.info(m.id);
-                logger.info(AberrationMod.CurrentAberrationPacks.get(currentDungeon()).name);
-                AberrationMod.CurrentAberrationPacks.get(currentDungeon()).ApplyBossPower(m);
+                if(m.id != "Cultist"){
+                    AberrationMod.CurrentAberrationPacks.get(currentDungeon()).ApplyBossPower(m);
+                }
 //                switch (AbstractDungeon.id){
 //                    case "Exordium":
 //                        logger.info("infecting");
@@ -204,7 +207,7 @@ public class AberrationMod implements PostInitializeSubscriber,
         ab.SetRng(new Random(Settings.seed));
         logger.info("randompack:"+ getRandomPackFromAll(ab.AberrationRng).name);
         this.CurrentAberrationPacks = getNPacks(ab.AberrationRng,3);
-        this.CurrentAberrationPacks.add(new ColdDescentPack());
+        this.CurrentAberrationPacks.add(new VoidPack());
 //        this.CurrentAberrationPacks.add(new WormDescentPack());
 //        this.CurrentAberrationPacks.add(new DeepDescentPack());
         logger.info("Full list of current packs: " + this.CurrentAberrationPacks.stream().map((pack) -> {
@@ -240,10 +243,22 @@ public class AberrationMod implements PostInitializeSubscriber,
 
     @Override
     public void receiveEditStrings() {
-        BaseMod.loadCustomStringsFile(RelicStrings.class, "aberrationResources/localization/zhs/AberrationMod-Relic-Strings.json");
-        BaseMod.loadCustomStringsFile(PowerStrings.class, "aberrationResources/localization/zhs/AberrationMod-Power-Strings.json");
-        BaseMod.loadCustomStringsFile(UIStrings.class, "aberrationResources/localization/zhs/AberrationMod-UI-Strings.json");
-        BaseMod.loadCustomStringsFile(MonsterStrings.class, "aberrationResources/localization/zhs/AberrationMod-Monster-Strings.json");
+        this.loadLocalizedStrings(UIStrings.class, "AberrationMod-UI-Strings");
+        this.loadLocalizedStrings(RelicStrings.class, "AberrationMod-Relic-Strings");
+        this.loadLocalizedStrings(PowerStrings.class, "AberrationMod-Power-Strings");
+        this.loadLocalizedStrings(EventStrings.class, "AberrationMod-Event-Strings");
+        this.loadLocalizedStrings(MonsterStrings.class, "AberrationMod-Monster-Strings");
+    }
+
+    private void loadLocalizedStrings(Class<?> stringClass, String fileName) {
+        BaseMod.loadCustomStringsFile(stringClass, modID + "Resources/localization/zhs/" + fileName + ".json");
+        if (!Settings.language.toString().equalsIgnoreCase("zhs")) {
+            String path = modID + "Resources/localization/" + Settings.language.toString().toLowerCase() + "/" + fileName + ".json";
+            if (Gdx.files.internal(path).exists()) {
+                BaseMod.loadCustomStringsFile(stringClass, path);
+            }
+        }
+
     }
 
     @Override
@@ -261,7 +276,7 @@ public class AberrationMod implements PostInitializeSubscriber,
         (new AutoAdd("aberration")).packageFilter(AbstractAberrationPack.class).any(AbstractAberrationPack.class, (info, pack) -> {
             if (packsByID.containsKey(pack.packID)) {
                 throw new RuntimeException("Duplicate pack detected with ID: " + pack.packID + ". Pack class 1: " + ((AbstractAberrationPack)packsByID.get(pack.packID)).getClass().getName() + ", pack class 2: " + pack.getClass().getName());
-            } else if(pack.packID!=null) {
+            } else if(pack.packID!=null&&!pack.Void) {
                 packsByID.put(pack.packID, pack);
                 allPacks.add(pack);
             }
@@ -318,7 +333,7 @@ public class AberrationMod implements PostInitializeSubscriber,
                 return 1;
             case "TheBeyond":
                 return 2;
-            case "TheEnd":
+            case "TheEnding":
                 return 3;
         }
         return -1;

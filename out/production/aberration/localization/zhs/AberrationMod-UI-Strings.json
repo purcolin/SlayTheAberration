@@ -1,9 +1,21 @@
 {
+  "aberration:MapLegendPatch": {
+  "TEXT": ["畸变", "畸变","这些怪物经历了什么，邪恶的气息扑面而来"]
+  },
+  "aberration:AberrationSource": {
+    "TEXT": ["接受畸变基因"]
+  },
+  "aberration:InfectedBlood": {
+    "TEXT": ["注入至一张卡牌(消耗1个注射器)","你当前没有注射器"]
+  },
+  "aberration:VoidPack": {
+    "TEXT": ["虚空", "畸变之源","purcolin"]
+  },
   "aberration:ColdCard": {
     "TEXT": ["寒裔", "", "造成伤害时给予等同于造成伤害层数的寒冷。"]
   },
   "aberration:ColdDescentGene": {
-    "TEXT": ["寒裔基因", "每次造成伤害时，生成伤害数1/9的冰球\n"]
+    "TEXT": ["寒裔基因","造成大于9的伤害时生成一个冰球", "每次造成伤害时，生成伤害数1/9的冰球"]
   },
   "aberration:ColdDescentPack": {
     "TEXT": ["寒灾：寒裔", "“寒灾”凛冬的子嗣，万物都将在极寒中冻结","purcolin"]
@@ -26,7 +38,13 @@
   "aberration:DeepDescentPack": {
     "TEXT": ["渊泉：深渊", "“狱渊”撒旦的子嗣。坠入深渊！","purcolin"]
   },
-  "aberration:MapLegendPatch": {
-    "TEXT": ["畸变", "畸变","这些怪物经历了什么，邪恶的气息扑面而来"]
+  "aberration:ThornsCard": {
+    "TEXT": ["荆棘", "", "打出后获得三点荆棘 NL 消耗"]
+  },
+  "aberration:ThornsDescentGene": {
+    "TEXT": ["荆棘基因", "每当敌人受到非攻击伤害，获得相当于此次伤害1/3的尖刺(下取整)"]
+  },
+  "aberration:ThornsDescentPack": {
+    "TEXT": ["荆凰：荆棘", "\"荆凰\"克窟的子嗣。感受荆棘的拥抱吧","purcolin"]
   }
 }

@@ -36,6 +36,7 @@ public class ProceedButtonPatch {
                 locator= ProceedButtonPatch.Locator.class
         )
         public static SpireReturn<Void> Insert(ProceedButton __instance) {
+//          添加显示畸变的screen
             logger.info("=========================  proceed hook =========================");
             logger.info(AbstractDungeon.screen);
 //            if(AberrationMod.IsShowAberrationScreen){
@@ -75,4 +76,7 @@ public class ProceedButtonPatch {
 
 
         }
+
+
+
 }

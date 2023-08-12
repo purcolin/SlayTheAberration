@@ -20,6 +20,8 @@ public class AbstractAberrationPack {
     public String author;
     public AbstractInjectedCard card;
     public AbstractGene gene;
+
+    public boolean Void = false;
     public ArrayList<Integer> validDungeons = new ArrayList<Integer>();
     public Texture bossImage = TextureLoader.getTexture((makePowerPath("WormDescentWormBoss.png")));
     public AbstractAberrationPack() {
@@ -41,8 +43,9 @@ public class AbstractAberrationPack {
     public void ApplyGene(AbstractPlayer player){
         if (player.hasRelic("aberration:AberrationGene")){
             logger.info("adding gene:"+this.gene.name);
+            this.gene.onEquip();
             AberrationMod.geneList.add(this.gene);
-            player.getRelic("aberration:AberrationGene").onTrigger();
+//            player.getRelic("aberration:AberrationGene").onTrigger();
             player.getRelic("aberration:AberrationGene").updateDescription(player.chosenClass);
         }
 

@@ -1,12 +1,11 @@
 package aberration.commands;
 
-
 import basemod.devcommands.ConsoleCommand;
 
-public class Aberration extends ConsoleCommand {
-    public Aberration() {
-        maxExtraTokens = 2; //How many additional words can come after this one. If unspecified, maxExtraTokens = 1.
-        minExtraTokens = 1; //How many additional words have to come after this one. If unspecified, minExtraTokens = 0.
+public class AberrationCPacks extends ConsoleCommand {
+    public AberrationCPacks() {
+        maxExtraTokens = 1; //How many additional words can come after this one. If unspecified, maxExtraTokens = 1.
+        minExtraTokens = 0; //How many additional words have to come after this one. If unspecified, minExtraTokens = 0.
         requiresPlayer = true; //if true, means the command can only be executed if during a run. If unspecified, requiresplayer = false.
         /**
          * If this flag is true and you don't implement your own logic overriding the command syntax check function, it checks if what is typed in is in the options you said the command has.
@@ -15,10 +14,7 @@ public class Aberration extends ConsoleCommand {
          */
 
 
-        followup.put("gene", AberrationGene.class);
-        followup.put("power", AberrationPower.class);
-        followup.put("current_packs", AberrationCPacks.class);
-        followup.put("fight", AberrationFight.class);
+        followup.put("replace", AberrationCPacksReplace.class);
         /**
          * Doing this adds this word as a possible followup to your current command, and passes it to YourSecondCommand.
          * You may add as many of these as you like.

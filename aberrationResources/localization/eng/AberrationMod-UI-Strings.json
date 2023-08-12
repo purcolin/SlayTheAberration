@@ -1,0 +1,50 @@
+{
+  "aberration:MapLegendPatch": {
+  "TEXT": ["Aberration", "AberrationMonster","Something happened"]
+  },
+  "aberration:AberrationSource": {
+    "TEXT": ["Obtain the aberration gene"]
+  },
+  "aberration:InfectedBlood": {
+    "TEXT": ["Inject to a card (need 1 injector)","you do not have injectors"]
+  },
+  "aberration:VoidPack": {
+    "TEXT": ["Void", "Mother of aberration","purcolin"]
+  },
+  "aberration:ColdCard": {
+    "TEXT": ["Cold", "", "gives Cold when attack, the amount is equivalent to the damage dealed."]
+  },
+  "aberration:ColdDescentGene": {
+    "TEXT": ["ColdDescentGene","Channel a Frost deal attack damage more than 9"]
+  },
+  "aberration:ColdDescentPack": {
+    "TEXT": ["ColdDescentPack", "“寒灾”凛冬的子嗣，万物都将在极寒中冻结","purcolin"]
+  },
+  "aberration:WormCard": {
+    "TEXT": ["Worm", "", "Take effect one more time every monster with hp less than half or 20 NL Exhaust"]
+  },
+  "aberration:WormDescentGene": {
+    "TEXT": ["WormDescentGene", "Obtain 2 eggs。Before the start of combat and death ，use a egg to heal to 1/4 of maxHp, obtaion 1 egg when each enemy died NL “所有虫族现在将你视为手足”","Current eggs:"]
+  },
+  "aberration:WormDescentPack": {
+    "TEXT": ["WormDescentPack", "“虫母”妃阿聂的子嗣。回归虫群，是世间一切的宿命","purcolin"]
+  },
+  "aberration:DeepCard": {
+    "TEXT": ["Deep", "", "Give Deep Power to a random enemy (engulf its next move) NL Exhaust"]
+  },
+  "aberration:DeepDescentGene": {
+    "TEXT": ["DeepDescentGene", "When an enemy's hp becoming less than half, gain 1 Strength, 1 Dexterity and 1 Focus "]
+  },
+  "aberration:DeepDescentPack": {
+    "TEXT": ["DeepDescentPack", "“狱渊”撒旦的子嗣。坠入深渊！","purcolin"]
+  },
+  "aberration:ThornsCard": {
+    "TEXT": ["Thorns", "", "Gain 3 Throns after played NL "]
+  },
+  "aberration:ThornsDescentGene": {
+    "TEXT": ["ThornsDescentGene", "Whenever an enemy damaged not by attack，Attacker gain Throns equivalent to the 1/3 of damage dealed."]
+  },
+  "aberration:ThornsDescentPack": {
+    "TEXT": ["ThornsDescentPack", "\"荆凰\"克窟的子嗣。感受荆棘的拥抱吧","purcolin"]
+  }
+}

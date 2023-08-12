@@ -39,23 +39,15 @@ public class aberrationGene extends CustomRelic implements CustomSavable<ArrayLi
         }else {
             String d = DESCRIPTIONS[0];
             for(AbstractGene g: AberrationMod.geneList){
-                d += g.name+": NL "+g.description+" NL ";
+                d += g.name+": NL "+g.getDescription()+" NL ";
             }
             this.description = d;
-            this.tips.clear();
-            this.tips.add(new PowerTip(this.name, this.description));
-            initializeTips();
         }
+        this.tips.clear();
+        this.tips.add(new PowerTip(this.name, this.description));
+        initializeTips();
 
     }
-
-    @Override
-    public void onTrigger(){
-        for(AbstractGene g: AberrationMod.geneList){
-            g.onEquip(this);
-        }
-    }
-
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         for(AbstractGene g: AberrationMod.geneList){
@@ -71,7 +63,7 @@ public class aberrationGene extends CustomRelic implements CustomSavable<ArrayLi
         } else {
             String d = DESCRIPTIONS[0];
             for (AbstractGene g : AberrationMod.geneList) {
-                d += g.name + ":\n" + g.getDescription() + "\n";
+                d += g.name+": NL "+g.getDescription()+" NL ";
             }
             return d;
         }

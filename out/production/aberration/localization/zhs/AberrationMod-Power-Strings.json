@@ -1,4 +1,10 @@
 {
+  "aberration:VoidBossPower": {
+    "NAME": "虚空",
+    "DESCRIPTIONS": [
+      "根据玩家的基因数量获得额外效果: NL ","0:受到的伤害减少20% NL ","1:获得等同于自身同时拥有最多减益效果数的力量 NL ","2:坚不可摧降低50 NL ","3: 死亡律动的层数每三回合+1 NL ","#b\"畸变的来源\""
+    ]
+  },
   "aberration:ColdDescentMonsterPower": {
     "NAME": "寒裔",
     "DESCRIPTIONS": [
@@ -57,8 +63,26 @@
   "aberration:DeepDescentDeepPower": {
     "NAME": "吞噬",
     "DESCRIPTIONS": [
-      "“深渊正在缓慢吞噬你”\n你打出的下一张非消耗牌打出后消耗\n"
+      "“深渊正在缓慢吞噬你”\n你打出的下一张非消耗牌打出后消耗\n","下","回合的意图将被消耗"
     ]
+  },
+  "aberration:ThornsDescentMonsterPower": {
+    "NAME": "荆棘",
+    "DESCRIPTIONS": [
+      "受攻击伤害时反弹30%\n"
+    ]
+  },
+  "aberration:ThornsDescentBossPower": {
+    "NAME": "荆棘之母",
+    "DESCRIPTIONS": [
+      "被\"荆凰\"克窟力量感染的畸变怪物。\n血量降低30%，但是额外反弹一次伤害","深渊在吞噬你"
+    ]
+  },
+  "aberration:ThornsDescentThornsedPower": {
+  "NAME": "荆棘之拥",
+  "DESCRIPTIONS": [
+    "受到非攻击伤害时，攻击者获得相当于伤害值1/3层的荆棘","荆棘需要进食。"
+  ]
   }
 }
 

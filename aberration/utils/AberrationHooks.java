@@ -29,20 +29,7 @@ public class AberrationHooks {
         logger.info("you entered an infected room");
         if(AbstractRoomInfectedPatch.infected.get(room)){
             AbstractMonster m = room.monsters.getRandomMonster(null,true, AberrationHooks.AberrationRng);
-            switch (AbstractDungeon.id){
-                case "Exordium":
-                    AberrationMod.CurrentAberrationPacks.get(0).ApplyMonsterPower(m);
-                    break;
-                case "TheCity":
-                    AberrationMod.CurrentAberrationPacks.get(1).ApplyMonsterPower(m);
-                    break;
-                case "TheBeyond":
-                    AberrationMod.CurrentAberrationPacks.get(2).ApplyMonsterPower(m);
-                    break;
-                case "TheEnd":
-                    AberrationMod.CurrentAberrationPacks.get(3).ApplyMonsterPower(m);
-                    break;
-            }
+            AberrationMod.CurrentAberrationPacks.get(AberrationMod.currentDungeon()).ApplyMonsterPower(m);
 //            logger.info(m.name);
         }
     }

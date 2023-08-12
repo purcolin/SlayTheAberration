@@ -1,6 +1,7 @@
 package aberration.packs.DeepDescent;
 
 import aberration.AberrationMod;
+import aberration.actions.RecoverMoveAction;
 import aberration.actions.RemoveMoveAction;
 import aberration.utils.TextureLoader;
 import com.badlogic.gdx.graphics.Texture;
@@ -52,8 +53,10 @@ public class DeepDescentDeepPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        if (this.owner != null) {
+        if (this.owner.isPlayer) {
             this.description = DESCRIPTIONS[0];
+        }else {
+            this.description = DESCRIPTIONS[1]+this.amount+DESCRIPTIONS[2];
         }
 
     }
@@ -83,8 +86,8 @@ public class DeepDescentDeepPower extends AbstractPower {
             if(this.amount == 1){
                 logger.info(this.tried);
                 if(this.tried){
-                    this.addToBot(new RollMoveAction((AbstractMonster) this.owner));
-                    this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
+                    this.addToTop(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
+                    this.addToTop(new RecoverMoveAction((AbstractMonster) this.owner));
                     this.tried = false;
                 }else {
                     this.addToBot(new RemoveMoveAction((AbstractMonster) this.owner));

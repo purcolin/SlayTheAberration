@@ -1,0 +1,88 @@
+{
+  "aberration:VoidBossPower": {
+    "NAME": "Void",
+    "DESCRIPTIONS": [
+      "Obtain following powers according to the number of Aberration Genes: NL ","0:Damage obtained reduce 20% NL ","1:Gain Strength Power as many as the max number of debuffs the owner has at once NL ","2:Invincible Power Reduce 50 NL ","3: Every 3 turns, Death Beat +1 NL ","#b\"畸变的来源\""
+    ]
+  },
+  "aberration:ColdDescentMonsterPower": {
+    "NAME": "ColdDescent",
+    "DESCRIPTIONS": [
+      "gives Cold when attack, the amount is equivalent to the damage dealed."
+    ]
+  },
+  "aberration:ColdDescentColdPower": {
+    "NAME": "Cold",
+    "DESCRIPTIONS": [
+      "the damage of your next attack reduce","then Cold reduce 1 NL at start of your turn, half the amount"
+    ]
+  },
+
+  "aberration:ColdDescentBossPower": {
+    "NAME": "ColdDescentBoss-Winter",
+    "DESCRIPTIONS": [
+      "Gives 2 Cold when attacked"
+    ]
+  },
+  "aberration:WormDescentWormLarvaPower": {
+    "NAME": "Larva",
+    "DESCRIPTIONS": [
+      "When died, give 1 damage each dead monster\n"
+    ]
+  },
+  "aberration:WormDescentMonsterPower": {
+    "NAME": "WormDescent",
+    "DESCRIPTIONS": [
+      "Turn every enemy to 2 Larva when health point went half\n"
+    ]
+  },
+  "aberration:WormDescentBossPower": {
+    "NAME": "WormDescentBoss-Fieane",
+    "DESCRIPTIONS": [
+      "Whenever been damaged more than 1/15 of its MaxHP (every","）summon 1 Larva. Summon 1 Larva every 3 turns."
+    ]
+  },
+  "aberration:DeepDescentMonsterPower": {
+  "NAME": "DeepDescent",
+  "DESCRIPTIONS": [
+    "give 1 Deep after damage the player"
+  ]
+},
+  "aberration:DeepDescentBossPower": {
+    "NAME": "DeepDescentBoss-Satan",
+    "DESCRIPTIONS": [
+      "Gain 3 Strength when different kinds of card was exhausted","深渊在吞噬你"
+    ]
+  },
+  "aberration:DeepDescentDeepEyedPower": {
+    "NAME": "DeepEyed",
+    "DESCRIPTIONS": [
+      "You are watched by the abyss","深渊在吞噬你"
+    ]
+  },
+  "aberration:DeepDescentDeepPower": {
+    "NAME": "Deep",
+    "DESCRIPTIONS": [
+      "“深渊正在缓慢吞噬你”Your next non-exhaust card played will be exhausted","the move of next","turns will be exhausted"
+    ]
+  },
+  "aberration:ThornsDescentMonsterPower": {
+    "NAME": "ThornsDescent",
+    "DESCRIPTIONS": [
+      "Rebounds 30% when damaged by attack\n"
+    ]
+  },
+  "aberration:ThornsDescentBossPower": {
+    "NAME": "ThornsDescentBoss-Kurcu",
+    "DESCRIPTIONS": [
+      "maxhp reduce 30%, but rebounds twice",""
+    ]
+  },
+  "aberration:ThornsDescentThornsedPower": {
+  "NAME": "TheHugOfThrons",
+  "DESCRIPTIONS": [
+    "When damaged not by attack，Attacker gain Throns equivalent to the 1/3 of damage dealed.","Throns need to eat"
+  ]
+  }
+}
+

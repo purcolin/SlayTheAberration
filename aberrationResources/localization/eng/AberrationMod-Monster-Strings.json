@@ -1,0 +1,11 @@
+{
+  "aberration:WormLarva": {
+    "NAME": "WormLarva",
+    "MOVES": [
+      "spit"
+    ],
+    "DIALOG": [
+      "stunned!"
+    ]
+  }
+}

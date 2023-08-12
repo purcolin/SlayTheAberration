@@ -39,6 +39,9 @@ public class AbstractGene{
         return description;
     }
 
+    public void initialize(){
+
+    }
     public void onLoseHp(int damageAmount) {
     }
 
@@ -71,7 +74,7 @@ public class AbstractGene{
     public void onSpendGold(AbstractRelic relic) {
     }
 
-    public void onEquip(AbstractRelic relic) {
+    public void onEquip() {
     }
 
     public void onUnequip(AbstractRelic relic) {
