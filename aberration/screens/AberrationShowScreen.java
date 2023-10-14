@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.TipHelper;
+import com.megacrit.cardcrawl.screens.compendium.RelicViewScreen;
 import com.megacrit.cardcrawl.ui.buttons.ProceedButton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +29,6 @@ public class AberrationShowScreen extends CustomScreen {
     public static float x = (float) Settings.WIDTH / 2.0F  - 725.0F* Settings.scale;
 
     public AberrationShowScreen(){
-
     }
 
     @Override
@@ -46,7 +46,7 @@ public class AberrationShowScreen extends CustomScreen {
             AbstractAberrationPack p = packs.get(i);
             logger.info(p.name);
             this.images.add(p.bossImage);
-            this.hbs.add(new Hitbox(x+i*400.0F* Settings.scale, (float)Settings.HEIGHT / 2.0F - 46.0F * Settings.scale - 433.5F* Settings.scale,650.0F* Settings.scale, 867.0F* Settings.scale));
+//            this.hbs.add(new Hitbox(x+i*400.0F* Settings.scale, (float)Settings.HEIGHT / 2.0F - 46.0F * Settings.scale - 433.5F* Settings.scale,650.0F* Settings.scale, 867.0F* Settings.scale));
         }
 //        if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.NONE)
 //            AbstractDungeon.previousScreen = AbstractDungeon.screen;
@@ -90,15 +90,15 @@ public class AberrationShowScreen extends CustomScreen {
         FontHelper.renderFont(sb, FontHelper.prepFont(80.0F,false), "尖塔遴选了它的畸变", (float)Settings.WIDTH/2 -360.0F*Settings.scale,(float)Settings.HEIGHT - 190.0F*Settings.scale, Settings.CREAM_COLOR);
         for(int i=0;i<images.size();i++){
             Texture t = images.get(i);
-            Hitbox hb = hbs.get(i);
+//            Hitbox hb = hbs.get(i);
             sb.draw(t,x+i*400.0F* Settings.scale, (float)Settings.HEIGHT / 2.0F - 46.0F * Settings.scale - 433.5F* Settings.scale, 325.0F, 433.5F, 650.0F* Settings.scale, 867.0F* Settings.scale, Settings.xScale, Settings.scale, 0.0F, 0, 0, 650, 867, false, false);
-            hb.render(sb);
-            if (hb.hovered) {
-                sb.setBlendFunction(770, 1);
-                sb.setColor(new Color(1.0F, 1.0F, 1.0F, 0.3F));
-                sb.setBlendFunction(770, 771);
-                FontHelper.renderFont(sb, FontHelper.prepFont(40.0F,false), AberrationMod.CurrentAberrationPacks.get(i).name, x+i*400.0F* Settings.scale,(float)Settings.HEIGHT / 2.0F - 46.0F * Settings.scale - 433.5F* Settings.scale, Settings.CREAM_COLOR);
-            }
+//            hb.render(sb);
+//            if (hb.hovered) {
+//                sb.setBlendFunction(770, 1);
+//                sb.setColor(new Color(1.0F, 1.0F, 1.0F, 0.3F));
+//                sb.setBlendFunction(770, 771);
+//                FontHelper.renderFont(sb, FontHelper.prepFont(40.0F,false), AberrationMod.CurrentAberrationPacks.get(i).name, x+i*400.0F* Settings.scale,(float)Settings.HEIGHT / 2.0F - 46.0F * Settings.scale - 433.5F* Settings.scale, Settings.CREAM_COLOR);
+//            }
 
         }
 

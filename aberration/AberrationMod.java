@@ -2,16 +2,12 @@ package aberration;
 import aberration.commands.Aberration;
 import aberration.packs.AbstractAberrationPack;
 import aberration.packs.AbstractGene;
-import aberration.packs.ColdDescent.ColdDescentPack;
-import aberration.packs.DeepDescent.DeepDescentPack;
 import aberration.packs.Void.VoidPack;
-import aberration.packs.WormDescent.WormDescentBossPower;
-import aberration.packs.WormDescent.WormDescentPack;
-import aberration.screens.AberrationShowScreen;
 import aberration.utils.AberrationHooks;
 import aberration.relics.aberrationGene;
 import aberration.relics.injector;
 import aberration.rewards.AberrationSource;
+import aberration.utils.IDCheckDontTouchPls;
 import basemod.AutoAdd;
 import basemod.devcommands.ConsoleCommand;
 import basemod.helpers.RelicType;
@@ -32,14 +28,16 @@ import basemod.BaseMod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.stream.Collectors;
 
-import static basemod.BaseMod.addCustomScreen;
+
 import static basemod.BaseMod.addRelic;
 
 @SpireInitializer
@@ -59,6 +57,8 @@ public class AberrationMod implements PostInitializeSubscriber,
     public static final Logger logger = LogManager.getLogger(AberrationMod.class.getName());
     public static ArrayList<AbstractAberrationPack> CurrentAberrationPacks = new ArrayList();
     public static ArrayList<AbstractAberrationPack> allPacks = new ArrayList();
+
+    public static ArrayList<AbstractAberrationPack> activatedPacks = new ArrayList();
     public static HashMap<String, AbstractAberrationPack> packsByID;
 
     public static Boolean IsShowAberrationScreen;
@@ -70,29 +70,29 @@ public class AberrationMod implements PostInitializeSubscriber,
     public AberrationMod() {
         // TODO: make an awesome mod!
         BaseMod.subscribe(this);
-//        setModID("aberration");
+        setModID("aberration");
     }
 
-//    public static void setModID(String ID) { // DON'T EDIT
-//        Gson coolG = new Gson(); // EY DON'T EDIT THIS
-//        //   String IDjson = Gdx.files.internal("IDCheckStringsDONT-EDIT-AT-ALL.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i hate u Gdx.files
-//        InputStream in = AberrationMod.class.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json"); // DON'T EDIT THIS ETHER
-//        IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // OR THIS, DON'T EDIT IT
-//        logger.info("You are attempting to set your mod ID as: " + ID); // NO WHY
-//        if (ID.equals(EXCEPTION_STRINGS.DEFAULTID)) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
-//            throw new RuntimeException(EXCEPTION_STRINGS.EXCEPTION); // THIS ALSO DON'T EDIT
-//        } else if (ID.equals(EXCEPTION_STRINGS.DEVID)) { // NO
-//            modID = EXCEPTION_STRINGS.DEFAULTID; // DON'T
-//        } else { // NO EDIT AREA
-//            modID = ID; // DON'T WRITE OR CHANGE THINGS HERE NOT EVEN A LITTLE
-//        } // NO
-//        logger.info("Success! ID is " + modID); // WHY WOULD U WANT IT NOT TO LOG?? DON'T EDIT THIS.
-//    } // NO
-//
-//    public static String getModID() { // NO
-//        return modID; // DOUBLE NO
-//    } // NU-UH
-//
+    public static void setModID(String ID) { // DON'T EDIT
+        Gson coolG = new Gson(); // EY DON'T EDIT THIS
+        //   String IDjson = Gdx.files.internal("IDCheckStringsDONT-EDIT-AT-ALL.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i hate u Gdx.files
+        InputStream in = AberrationMod.class.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json"); // DON'T EDIT THIS ETHER
+        IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // OR THIS, DON'T EDIT IT
+        logger.info("You are attempting to set your mod ID as: " + ID); // NO WHY
+        if (ID.equals(EXCEPTION_STRINGS.DEFAULTID)) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
+            throw new RuntimeException(EXCEPTION_STRINGS.EXCEPTION); // THIS ALSO DON'T EDIT
+        } else if (ID.equals(EXCEPTION_STRINGS.DEVID)) { // NO
+            modID = EXCEPTION_STRINGS.DEFAULTID; // DON'T
+        } else { // NO EDIT AREA
+            modID = ID; // DON'T WRITE OR CHANGE THINGS HERE NOT EVEN A LITTLE
+        } // NO
+        logger.info("Success! ID is " + modID); // WHY WOULD U WANT IT NOT TO LOG?? DON'T EDIT THIS.
+    } // NO
+
+    public static String getModID(){
+        return modID;
+    }
+
 
     public static void initialize() {
         logger.info("========================= Initializing Aberration. =========================");
@@ -109,6 +109,9 @@ public class AberrationMod implements PostInitializeSubscriber,
         logger.info("Full list of packs: " + allPacks.stream().map((pack) -> {
             return pack.name;
         }).collect(Collectors.toList()));
+        logger.info(Settings.scale);
+        logger.info(Settings.xScale);
+        logger.info(Settings.yScale);
 //        BaseMod.addCustomScreen(new AberrationShowScreen());
 
 //        BaseMod.addEvent(new AddEventParams.Builder(AfterKill.ID, AfterKill.class).create());
@@ -130,28 +133,24 @@ public class AberrationMod implements PostInitializeSubscriber,
 
     @Override
     public void receiveEditKeywords() {
-//        BaseMod.addKeyword(new String[]{"ice","寒冷"},"Will apply a buff to the next attack with Ice in its description.");
-
+        logger.info("receive keywords -------------------");
         Gson gson = new Gson();
         String json = Gdx.files.internal(getModID() + "Resources/localization/zhs/AberrationMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        if (!Settings.language.toString().equalsIgnoreCase("zhs")) {
+            String path = getModID() + "Resources/localization/" + Settings.language.toString().toLowerCase() + "/AberrationMod-Keyword-Strings.json";
+            if (Gdx.files.internal(path).exists()) {
+                json = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
+            }
+        }
         Keyword[] keywords = gson.fromJson(json, Keyword[].class);
 
         if (keywords != null) {
             for (Keyword keyword : keywords) {
                 BaseMod.addKeyword(getModID(), keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
-                //  getModID().toLowerCase() makes your keyword mod specific (it won't show up in other cards that use that word)
+                logger.info(Arrays.toString(keyword.NAMES));
             }
         }
     }
-
-    @Override
-    public void receiveEditCards() {
-//        AbstractCard flare = new Flare();
-//        BaseMod.addCard(flare);
-//        logger.info(flare.name);
-//        logger.info(flare.cardID);
-    }
-
     @Override
     public void receivePostDungeonInitialize() {
         logger.info("receive post dungeon initialize");
@@ -168,9 +167,9 @@ public class AberrationMod implements PostInitializeSubscriber,
             Iterator var1 = abstractRoom.monsters.monsters.iterator();
             while(var1.hasNext()) {
                 AbstractMonster m = (AbstractMonster)var1.next();
-                logger.info(m.id);
-                if(m.id != "Cultist"){
+                if(m.type == AbstractMonster.EnemyType.BOSS){
                     AberrationMod.CurrentAberrationPacks.get(currentDungeon()).ApplyBossPower(m);
+                    break;
                 }
 //                switch (AbstractDungeon.id){
 //                    case "Exordium":
@@ -199,17 +198,16 @@ public class AberrationMod implements PostInitializeSubscriber,
     @Override
     public void receiveStartGame() {
         logger.info("========================= Loading Aberration. =========================");
-        logger.info("Full list of packs: " + this.geneList.stream().map((gene) -> {
+        logger.info("Full list of genes: " + this.geneList.stream().map((gene) -> {
             gene.loading();
             return gene.name;
         }).collect(Collectors.toList()));
         AberrationHooks ab = new AberrationHooks(new Random(Settings.seed));
         ab.SetRng(new Random(Settings.seed));
         logger.info("randompack:"+ getRandomPackFromAll(ab.AberrationRng).name);
+        this.activatedPacks = allPacks;
         this.CurrentAberrationPacks = getNPacks(ab.AberrationRng,3);
         this.CurrentAberrationPacks.add(new VoidPack());
-//        this.CurrentAberrationPacks.add(new WormDescentPack());
-//        this.CurrentAberrationPacks.add(new DeepDescentPack());
         logger.info("Full list of current packs: " + this.CurrentAberrationPacks.stream().map((pack) -> {
             return pack.name;
         }).collect(Collectors.toList()));
@@ -251,9 +249,9 @@ public class AberrationMod implements PostInitializeSubscriber,
     }
 
     private void loadLocalizedStrings(Class<?> stringClass, String fileName) {
-        BaseMod.loadCustomStringsFile(stringClass, modID + "Resources/localization/zhs/" + fileName + ".json");
+        BaseMod.loadCustomStringsFile(stringClass, getModID() + "Resources/localization/zhs/" + fileName + ".json");
         if (!Settings.language.toString().equalsIgnoreCase("zhs")) {
-            String path = modID + "Resources/localization/" + Settings.language.toString().toLowerCase() + "/" + fileName + ".json";
+            String path = getModID() + "Resources/localization/" + Settings.language.toString().toLowerCase() + "/" + fileName + ".json";
             if (Gdx.files.internal(path).exists()) {
                 BaseMod.loadCustomStringsFile(stringClass, path);
             }
@@ -287,6 +285,10 @@ public class AberrationMod implements PostInitializeSubscriber,
         return (AbstractAberrationPack)allPacks.get(rng.random(0, allPacks.size() - 1));
     }
 
+    public static AbstractAberrationPack getRandomPackFromActivated(Random rng) {
+        return (AbstractAberrationPack)activatedPacks.get(rng.random(0, allPacks.size() - 1));
+    }
+
     public static Boolean containPack(ArrayList<AbstractAberrationPack> packs,AbstractAberrationPack pack){
         Iterator var10 = packs.iterator();
         while(var10.hasNext()) {
@@ -308,20 +310,44 @@ public class AberrationMod implements PostInitializeSubscriber,
         return var4;
     }
 
+    public static void AddGene(AbstractGene g){
+        logger.info(geneList);
+        if(hasGene(g)){
+            logger.info("repeated gene:"+g.name);
+        }else {
+            geneList.add(g);
+        }
+    }
+
+    public static boolean hasGene(AbstractGene g){
+        for(AbstractGene var0:geneList){
+            if(var0.id == g.id){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static String makePowerPath(String resourcePath) {
         String[] var0 = resourcePath.split("Descent");
         String var2 = var0[0] + "Descent";
         String var3 = var0[1];
-        return "aberrationResources/images/packs/"+var2+"/"+resourcePath;
+        String output = "aberrationResources/images/packs/"+var2+"/"+resourcePath;
+        return output;
     }
 
+    public static String makeVoidPowerPath(String resourcePath) {
+        String output = "aberrationResources/images/packs/"+"Void"+"/"+resourcePath;
+        return output;
+    }
+
+
     public static String makeID(String idText) {
-        return modID + ":" + idText;
+        return getModID() + ":" + idText;
     }
 
     public static String getClassById(String idText){
-        String tem = idText.replace(modID+":","");
+        String tem = idText.replace(getModID()+":","");
         return "aberration.packs."+tem.replace("Gene","")+"."+tem;
     }
 
@@ -338,11 +364,25 @@ public class AberrationMod implements PostInitializeSubscriber,
         }
         return -1;
     }
+    @Override
+    public void receiveEditCards() {
+//            AbstractCard flare = new Flare();
+//            BaseMod.addCard(flare);
+//            logger.info(flare.name);
+//            logger.info(flare.cardID);
+            logger.info("-------------adding aberration cards-------------");
+            logger.info("Adding cards");
+            new AutoAdd("aberration") // ${project.artifactId}
+                    .packageFilter(AbstractAberrationPack.class) // filters to any class in the same package as AbstractDefaultCard, nested packages included
+                    .setDefaultSeen(true)
+                    .cards();
 
-    public String getModID(){
-        return this.modID;
+            // .setDefaultSeen(true) unlocks the cards
+            // This is so that they are all "seen" in the library,
+            // for people who like to look at the card list before playing your mod
+
+            logger.info("Done adding cards!");
     }
-
 }
 
 

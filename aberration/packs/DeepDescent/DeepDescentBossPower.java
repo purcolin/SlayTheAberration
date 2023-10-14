@@ -25,16 +25,13 @@ public class DeepDescentBossPower extends AbstractPower {
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(DeepDescentBossPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(DeepDescentBossPower.class.getSimpleName()+"32.png"));
 
-    public DeepDescentBossPower(AbstractCreature owner, AbstractCreature source, int amount) {
+    public DeepDescentBossPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.source = source;
-        this.amount = amount;
         this.priority = 100;
-        if (this.amount >= 10) {
-            this.amount = 1;
-        }
+        this.amount = -1;
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
         this.updateDescription();

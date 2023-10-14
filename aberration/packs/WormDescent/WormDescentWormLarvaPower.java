@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.unique.CanLoseAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -56,6 +57,7 @@ public class WormDescentWormLarvaPower extends AbstractPower {
 
     @Override
     public void onDeath() {
+        AbstractDungeon.getCurrRoom().cannotLose = true;
         int count = 0;
         for (AbstractMonster mon : (AbstractDungeon.getMonsters()).monsters) {
             if (mon.isDead) {
@@ -66,6 +68,7 @@ public class WormDescentWormLarvaPower extends AbstractPower {
             logger.info("死亡的怪物数："+count);
             addToBot((AbstractGameAction)new DamageAction((AbstractCreature)AbstractDungeon.player, new DamageInfo((AbstractCreature)AbstractDungeon.player, 1, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.POISON));
         }
+        addToBot(new CanLoseAction());
     }
 
 

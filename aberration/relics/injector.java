@@ -52,7 +52,6 @@ public class injector extends CustomRelic{
     public String getUpdatedDescription() {
         String var2 = DESCRIPTIONS[0];
         for(AbstractAberrationPack p :AberrationMod.CurrentAberrationPacks){
-            logger.info(p.name);
             var2+=(p.name+" NL ");
         }
         return var2; // DESCRIPTIONS pulls from your localization file

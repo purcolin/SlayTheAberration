@@ -56,16 +56,16 @@ public class AbstractGene{
     public void onEvokeOrb(AbstractOrb ammo,AbstractRelic r) {
     }
 
-    public void onPlayCard(AbstractCard c, AbstractMonster m,AbstractRelic r) {
+    public void onPlayCard(AbstractCard c, AbstractMonster m,AbstractRelic relic) {
     }
 
-    public void onPreviewObtainCard(AbstractCard c,AbstractRelic r) {
+    public void onPreviewObtainCard(AbstractCard c,AbstractRelic relic) {
     }
 
-    public void onObtainCard(AbstractCard c,AbstractRelic r) {
+    public void onObtainCard(AbstractCard c,AbstractRelic relic) {
     }
 
-    public void onGainGold(AbstractRelic r) {
+    public void onGainGold(AbstractRelic relic) {
     }
 
     public void onLoseGold(AbstractRelic relic) {
@@ -166,7 +166,6 @@ public class AbstractGene{
     }
 
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target, AbstractRelic r) {
-        logger.info("publish on attack"+this.name);
     }
 
     public int onAttacked(DamageInfo info, int damageAmount,AbstractRelic relic) {

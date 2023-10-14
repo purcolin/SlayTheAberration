@@ -16,5 +16,8 @@
     <orderEntry type="library" name="CardAugments" level="project" />
     <orderEntry type="library" name="actlikeit" level="project" />
     <orderEntry type="library" name="ExtraEnergyMod" level="project" />
+    <orderEntry type="library" name="RelicUpgradeLib" level="project" />
+    <orderEntry type="library" name="AscensionManager" level="project" />
+    <orderEntry type="library" name="yUi" level="project" />
   </component>
 </module>

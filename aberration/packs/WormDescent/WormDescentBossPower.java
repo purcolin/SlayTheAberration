@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -24,20 +25,20 @@ public class WormDescentBossPower extends AbstractPower {
     private static final PowerStrings powerStrings;
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
+    private static Float[] xList = {-800F,-600F,-400F,-200F,0F,200F,-800F,-600F,-400F,200F,-800F,-600F,-400F,200F,-600F,-400F,-200F,0F,200F};
+    private static Float[] yList = {540F,540F,540F,540F,540F,540F,360F,360F,360F,360F,180F,180F,180F,180F,-180F,-180F,-180F,-180F,-180F};
     private int turn=0;
     private AbstractCreature source;
+    private int count = 0;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(WormDescentBossPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(WormDescentBossPower.class.getSimpleName()+"32.png"));
-    public WormDescentBossPower(AbstractCreature owner, AbstractCreature source, int amount) {
+    public WormDescentBossPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.source = source;
-        this.amount = amount;
         this.priority = 100;
-        if (this.amount >= 1) {
-            this.amount = 1;
-        }
+        this.amount = -1;
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
         this.updateDescription();
@@ -54,8 +55,7 @@ public class WormDescentBossPower extends AbstractPower {
 
     public int onAttacked(DamageInfo info, int damageAmount) {
         for(int var0=0;var0<damageAmount/(this.owner.maxHealth/15);var0++){
-            AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SpawnMonsterAction(new WormLarva(this.owner.drawX-800F+this.amount*200F, this.owner.drawY-120F-170F*((int)(this.amount-1)/6), true, 39), true));
-            this.amount++;
+            this.SummonLarva();
         }
         return damageAmount;
 
@@ -63,10 +63,18 @@ public class WormDescentBossPower extends AbstractPower {
 
     public void atStartOfTurn(){
         if(this.turn%3==0){
-            AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SpawnMonsterAction(new WormLarva(this.owner.drawX+-800F+this.amount*200F, this.owner.drawY-120F-170F*((int)(this.amount-1)/6), true, 39), true));
-            this.amount++;
+            this.SummonLarva();
         }
         this.turn++;
+    }
+
+    private void SummonLarva(){
+        if(this.count<19){
+            AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SpawnMonsterAction(new WormLarva(xList[count], yList[count]), true));
+        }else{
+            AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SpawnMonsterAction(new WormLarva(xList[10], yList[10]), true));
+        }
+        this.count++;
     }
 
 

@@ -25,18 +25,15 @@ public class ThornsDescentMonsterPower extends AbstractPower {
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
     private AbstractCreature source;
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ThornsDescentThornsedPower.class.getSimpleName()+".png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ThornsDescentThornsedPower.class.getSimpleName()+"32.png"));
-    public ThornsDescentMonsterPower(AbstractCreature owner, AbstractCreature source, int coldAmt) {
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ThornsDescentMonsterPower.class.getSimpleName()+".png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ThornsDescentMonsterPower.class.getSimpleName()+"32.png"));
+    public ThornsDescentMonsterPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.source = source;
-        this.amount = coldAmt;
         this.priority = 100;
-        if (this.amount >= 1) {
-            this.amount = 1;
-        }
+        this.amount = -1;
         logger.info(this.ID);
         this.updateDescription();
         this.type = PowerType.BUFF;

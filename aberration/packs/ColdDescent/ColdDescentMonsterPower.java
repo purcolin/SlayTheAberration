@@ -25,16 +25,13 @@ public class ColdDescentMonsterPower extends AbstractPower {
     private AbstractCreature source;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ColdDescentColdPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ColdDescentColdPower.class.getSimpleName()+"32.png"));
-    public ColdDescentMonsterPower(AbstractCreature owner, AbstractCreature source, int coldAmt) {
+    public ColdDescentMonsterPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.source = source;
-        this.amount = coldAmt;
+        this.amount = -1;
         this.priority = 100;
-        if (this.amount >= 1) {
-            this.amount = 1;
-        }
         logger.info(this.ID);
         this.updateDescription();
         this.type = AbstractPower.PowerType.BUFF;

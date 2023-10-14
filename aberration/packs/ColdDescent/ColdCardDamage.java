@@ -17,7 +17,7 @@ public class ColdCardDamage extends AbstractDamageModifier {
 
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
         if (lastDamageTaken > 0) {
-            this.addToBot(new ApplyPowerAction(target, info.owner, new ColdDescentColdPower(target, info.owner, lastDamageTaken)));
+            this.addToBot(new ApplyPowerAction(target, info.owner, new ColdDescentColdPower(target, info.owner, lastDamageTaken/2)));
         }
 
     }

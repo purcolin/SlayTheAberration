@@ -26,14 +26,15 @@ public class WormDescentPack extends AbstractAberrationPack{
         }
         this.card = new WormCard();
         this.gene = new WormDescentGene();
+        this.type = AberrationPackType.SEASONS;
     }
     public void ApplyMonsterPower(AbstractMonster m){
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new WormDescentMonsterPower(m, m, 1)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new WormDescentMonsterPower(m, m)));
     }
 
     public void ApplyBossPower(AbstractMonster m){
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new WormDescentBossPower(m, m, 1)));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new WormDescentMonsterPower(m, m, 1)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new WormDescentBossPower(m, m)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new WormDescentMonsterPower(m, m)));
     }
     static {
 //        logger.info(ID);

@@ -15,8 +15,7 @@ import basemod.abstracts.CustomCard;
 
 import java.util.ArrayList;
 
-public class Flare
-        extends CustomCard {
+public class Flare extends CustomCard {
     public static final String ID = "aberration:Flare";
     private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     // Get object containing the strings that are displayed in the game.

@@ -2,8 +2,11 @@ package aberration.packs.DeepDescent;
 
 import aberration.AberrationMod;
 import aberration.packs.AbstractGene;
+import aberration.patch.AbstractMonsterHalfedPatch;
+import aberration.patch.AbstractRoomInfectedPatch;
 import basemod.abstracts.CustomSavable;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -15,37 +18,44 @@ import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-public class DeepDescentGene extends AbstractGene implements CustomSavable<Integer> {
+import java.util.Iterator;
+
+public class DeepDescentGene extends AbstractGene{
 
     public static final String ID = AberrationMod.makeID(DeepDescentGene.class.getSimpleName());
-    private int WormCount;
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
+    private int count = 0;
     public DeepDescentGene() {
         super(ID,TEXT[0], TEXT[1]);
     }
-
     @Override
-    public void onMonsterDeath(AbstractMonster m,AbstractRelic r) {
-        this.addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new StrengthPower(AbstractDungeon.player,1)));
-        this.addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DexterityPower(AbstractDungeon.player,1)));
-        this.addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new FocusPower(AbstractDungeon.player,1)));
-    }
-
-
-
-    @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target, AbstractRelic r) {
-
+    public void onSpawnMonster(AbstractMonster monster,AbstractRelic r) {
+        AbstractMonsterHalfedPatch.Halfed.set(monster,false);
     }
     @Override
-    public Integer onSave() {
-        return this.WormCount;
+    public void atBattleStart(AbstractRelic r) {
+        Iterator var1 = AbstractDungeon.getMonsters().monsters.iterator();
+
+        while(var1.hasNext()) {
+            AbstractMonster m = (AbstractMonster)var1.next();
+            AbstractMonsterHalfedPatch.Halfed.set(m,false);
+        }
     }
 
     @Override
-    public void onLoad(Integer integer) {
-        this.WormCount = integer;
+    public void onPlayerEndTurn(AbstractRelic r) {
+        Iterator var1 = AbstractDungeon.getMonsters().monsters.iterator();
+
+        while(var1.hasNext()) {
+            AbstractMonster m = (AbstractMonster)var1.next();
+            if(!AbstractMonsterHalfedPatch.Halfed.get(m)&&m.currentHealth<=m.maxHealth/2){
+                AbstractMonsterHalfedPatch.Halfed.set(m,true);
+                this.addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new StrengthPower(AbstractDungeon.player,1)));
+                this.addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new DexterityPower(AbstractDungeon.player,1)));
+                this.addToBot(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new FocusPower(AbstractDungeon.player,1)));
+            }
+        }
     }
 
     static {

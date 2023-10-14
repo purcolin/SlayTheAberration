@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static aberration.AberrationMod.makePowerPath;
+import static aberration.packs.AbstractAberrationPack.AberrationPackType;
 
 public class ColdDescentPack extends AbstractAberrationPack{
     public static final Logger logger = LogManager.getLogger(ColdDescentPack.class.getName());
@@ -29,15 +30,16 @@ public class ColdDescentPack extends AbstractAberrationPack{
         }
         this.card = new ColdCard();
         this.gene = new ColdDescentGene();
+        this.type = AberrationPackType.SEASONS;
         this.bossImage = TextureLoader.getTexture((makePowerPath("ColdDescentColdBoss.png")));
     }
     public void ApplyMonsterPower(AbstractMonster m){
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ColdDescentMonsterPower(m, m, 1)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ColdDescentMonsterPower(m, m)));
     }
 
     public void ApplyBossPower(AbstractMonster m){
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ColdDescentBossPower(m, m, 1)));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ColdDescentMonsterPower(m, m, 1)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ColdDescentBossPower(m, m)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ColdDescentMonsterPower(m, m)));
     }
     static {
         uiStrings = CardCrawlGame.languagePack.getUIString(ID);

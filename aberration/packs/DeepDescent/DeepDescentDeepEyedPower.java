@@ -68,7 +68,6 @@ public class DeepDescentDeepEyedPower extends AbstractPower {
             logger.info("新的类别："+card.type);
             used.add(card.type);
             Iterator var1 = AbstractDungeon.getMonsters().monsters.iterator();
-
             while(var1.hasNext()) {
                 AbstractMonster m = (AbstractMonster)var1.next();
                 if (!m.isDeadOrEscaped()) {
@@ -85,7 +84,4 @@ public class DeepDescentDeepEyedPower extends AbstractPower {
         DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target){
-        this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
-    }
 }

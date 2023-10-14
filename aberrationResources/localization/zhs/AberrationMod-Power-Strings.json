@@ -2,80 +2,80 @@
   "aberration:VoidBossPower": {
     "NAME": "虚空",
     "DESCRIPTIONS": [
-      "根据玩家的基因数量获得额外效果: NL ","0:受到的伤害减少20% NL ","1:获得等同于自身同时拥有最多减益效果数的力量 NL ","2:坚不可摧降低50 NL ","3: 死亡律动的层数每三回合+1 NL ","#b\"畸变的来源\""
+      "根据玩家的基因数量获得额外效果: NL ","0:受到的伤害减少20% NL ","1:获得等同于自身同时拥有最多减益效果数的力量 NL ","2: 坚不可摧降低50 NL ","3: 死亡律动每第三回合增加一层 NL ","#b\"畸变的来源\""
     ]
   },
   "aberration:ColdDescentMonsterPower": {
     "NAME": "寒裔",
     "DESCRIPTIONS": [
-      "它拥抱冰冷，成为了寒裔。\n寒裔：每次攻击时给予等同于造成伤害层数的 寒冷 "
+      " #b它拥抱冰冷，成为了寒裔. NL 寒裔：每次攻击时给予等同于造成伤害层数的 #y寒冷 #p（降低等量攻击伤害，攻击后与回合结束时降低） NL"
     ]
   },
   "aberration:ColdDescentColdPower": {
     "NAME": "寒冷",
     "DESCRIPTIONS": [
-      "下次攻击的伤害减少","点并失去一点寒冷 NL 回合开始时层数减半"
+      "下次攻击的伤害减少","点然后将 #y寒冷 层数减少 #b等同伤害数值的层数 。NL 在其回合开始时，减少至1/3。"
     ]
   },
 
   "aberration:ColdDescentBossPower": {
     "NAME": "寒灾之源",
     "DESCRIPTIONS": [
-      "被“寒灾”凛冬本源力量感染的畸变怪物。 NL 每次受到攻击时给予2层 寒冷 ,"
+      " #b被“寒灾”凛冬本源力量感染的畸变怪物。 NL 每次受到攻击时给予2层 #y寒冷 ,"
     ]
   },
   "aberration:WormDescentWormLarvaPower": {
     "NAME": "幼虫",
     "DESCRIPTIONS": [
-      "“虫群的仇恨，生生不息”\n死亡时，场上每有一具尸体，对你造成一点伤害\n"
+      "“虫群的仇恨，生生不息” NL 死亡时，每有一位死亡的怪物，对你造成一点伤害."
     ]
   },
   "aberration:WormDescentMonsterPower": {
     "NAME": "虫群",
     "DESCRIPTIONS": [
-      "半血时将每个敌人转化为两只幼虫，转换前清除正面状态\n"
+      "回合开始时，若血量低于上限的一半，将每个敌人转化为两只 #y幼虫 ，转换前清除正面状态"
     ]
   },
   "aberration:WormDescentBossPower": {
     "NAME": "虫族之母",
     "DESCRIPTIONS": [
-      "被“虫母”妃阿聂力量感染的畸变怪物。\n每次收到大于每血量1/15的伤害(每","点）时分裂一只幼虫，每三回合分裂一只幼虫"
+      "被“虫母”妃阿聂力量感染的畸变怪物。 NL 每次受到大于血量1/15的伤害(每","点）时分裂一只 #y幼虫，每三回合分裂一只 #y幼虫"
     ]
   },
   "aberration:DeepDescentMonsterPower": {
   "NAME": "深渊",
   "DESCRIPTIONS": [
-    "攻击若造成伤害，则给予一层吞噬\n"
+    "攻击若造成伤害，则给予一层 #y吞噬 #p（下张打出的牌被消耗）  "
   ]
 },
   "aberration:DeepDescentBossPower": {
     "NAME": "深层狱渊",
     "DESCRIPTIONS": [
-      "被“狱渊”撒旦力量感染的畸变怪物。\n每当玩家有不同类别的牌被消耗时，获得三点力量","深渊在吞噬你"
+      "被“狱渊”撒旦以兑之力感染的畸变怪物。 NL 每当玩家有不同类别的牌被消耗时，获得3点 力量 ","深渊在吞噬你"
     ]
   },
   "aberration:DeepDescentDeepEyedPower": {
     "NAME": "深渊凝视",
     "DESCRIPTIONS": [
-      "深渊觊觎着你的力量。\n","深渊在吞噬你"
+      "深渊觊觎着你的力量。 NL ","深渊在吞噬你"
     ]
   },
   "aberration:DeepDescentDeepPower": {
     "NAME": "吞噬",
     "DESCRIPTIONS": [
-      "“深渊正在缓慢吞噬你”\n你打出的下一张非消耗牌打出后消耗\n","下","回合的意图将被消耗"
+      "“深渊正在缓慢吞噬你” NL 消耗你打出的下","张牌。 ","下","回合的意图将被消耗"
     ]
   },
   "aberration:ThornsDescentMonsterPower": {
-    "NAME": "荆棘",
+    "NAME": "荆棘畸变",
     "DESCRIPTIONS": [
-      "受攻击伤害时反弹30%\n"
+      "受攻击伤害时反弹伤害的30%"
     ]
   },
   "aberration:ThornsDescentBossPower": {
     "NAME": "荆棘之母",
     "DESCRIPTIONS": [
-      "被\"荆凰\"克窟力量感染的畸变怪物。\n血量降低30%，但是额外反弹一次伤害","深渊在吞噬你"
+      "被\"荆凰\"克窟力量感染的畸变怪物。 NL 血量降低最大生命值的30%，但是额外反弹一次伤害","深渊在吞噬你"
     ]
   },
   "aberration:ThornsDescentThornsedPower": {
@@ -83,6 +83,73 @@
   "DESCRIPTIONS": [
     "受到非攻击伤害时，攻击者获得相当于伤害值1/3层的荆棘","荆棘需要进食。"
   ]
+  },
+  "aberration:CurseDescentMonsterPower": {
+    "NAME": "咒巫",
+    "DESCRIPTIONS": [
+      "战斗开始时向你的牌组中添加一张 #y嗜血"
+    ]
+  },
+  "aberration:CurseDescentBossPower": {
+    "NAME": "咒祭萨满",
+    "DESCRIPTIONS": [
+      "战斗开始时向你的牌组中额外添加两张嗜血诅咒","祭祀为艮"
+    ]
+  },
+  "aberration:ThunderDescentMonsterPower": {
+    "NAME": "雷怪",
+    "DESCRIPTIONS": [
+      "每回合若造成伤害，则给予1层 #y麻痹 NL "," #b你现在没有麻痹"," #p已打出","张牌。"
+    ]
+  },
+  "aberration:ThunderDescentBossPower": {
+    "NAME": "夔之雷鸣",
+    "DESCRIPTIONS": [
+      "被”天雷“夔以震之力感染的畸变怪物。 NL 麻痹的基础阈值降低至3","其光如日月，其声如雷，其名曰夔。"
+    ]
+  },
+  "aberration:ThunderDescentParalysisPower": {
+    "NAME": "麻痹",
+    "DESCRIPTIONS": [
+      "每打出","张牌，使手牌中随机一张牌的费用增加一点。"
+    ]
+  },
+  "aberration:SeabornDescentMonsterPower": {
+    "NAME": "海嗣",
+    "DESCRIPTIONS": [
+      "每回合给予你1层 #y神经损伤 。 NL 闪避来自具有 #y神经损伤 的单位对其造成的每第3次伤害 NL "," #b你现在没有神经损伤","#p再受到 #y"," #p次伤害后，闪避下次受到的伤害。"
+    ]
+  },
+  "aberration:SeabornDescentBossPower": {
+    "NAME": "生态泉源",
+    "DESCRIPTIONS": [
+      "被”生态泉源“伊祖米克以坎之力感染的畸变怪物。 NL 每回合若为攻击意图，则额外给予1层 #y神经损伤 ，否则额外给予2层","临近进化奇点的完美生物，大群的建言者与引领者，“后生的初生”，海嗣。。"
+    ]
+  },
+  "aberration:SeabornDescentSanityPower": {
+    "NAME": "神经损伤",
+    "DESCRIPTIONS": [
+      "每积攒至 #y"," 层时，消耗所有 #y神经损伤 ，受到20点 #b元素伤害 并获得1层 虚弱 。"
+    ]
+  },
+  "aberration:FlightDescentMonsterPower": {
+    "NAME": "生翼",
+    "DESCRIPTIONS": [
+      "获得3层飞行，若已有飞行则改为一层"
+    ]
+  },
+  "aberration:FlightDescentBossPower": {
+    "NAME": "夔之风起",
+    "DESCRIPTIONS": [
+      "被”翼龙“应龙以巽之力感染的畸变怪物。 NL 每回合额外获得2层飞行，每次失去飞行前只能获得一次","应龙之翔，云雾滃然而从，震风薄怒，万空不约而号，物有自然相动耳。"
+    ]
+  },
+  "aberration:FlightDescentFlightPower": {
+    "NAME": "生翼而飞",
+    "DESCRIPTIONS": [
+      "将所受到的 #y攻击 伤害降低 #b50% 。 如果在一个回合内被 #y攻击 伤害 #b",
+      " 次，就会取消。取消后不会眩晕。"
+    ]
   }
 }
 

@@ -5,6 +5,7 @@ import aberration.packs.AbstractGene;
 import aberration.utils.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -51,7 +52,6 @@ public class aberrationGene extends CustomRelic implements CustomSavable<ArrayLi
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         for(AbstractGene g: AberrationMod.geneList){
-            logger.info(g.name);
             g.onAttack(info, damageAmount, target,this);
         }
     }
@@ -74,6 +74,12 @@ public class aberrationGene extends CustomRelic implements CustomSavable<ArrayLi
             g.onMonsterDeath(m,this);
         }
     }
+    @Override
+    public void onPlayerEndTurn() {
+        for(AbstractGene g: AberrationMod.geneList){
+            g.onPlayerEndTurn(this);
+        }
+    }
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
@@ -91,9 +97,38 @@ public class aberrationGene extends CustomRelic implements CustomSavable<ArrayLi
     }
 
     @Override
+    public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
+        for(AbstractGene g: AberrationMod.geneList){
+            damageAmount = g.onAttackToChangeDamage(info,damageAmount,this);
+        }
+        return damageAmount;
+    }
+
+
+    @Override
     public void atBattleStart() {
         for(AbstractGene g: AberrationMod.geneList){
             g.atBattleStart(this);
+        }
+    }
+
+    @Override
+    public void onMasterDeckChange(){
+        for(AbstractGene g: AberrationMod.geneList){
+            g.onMasterDeckChange(this);
+        }
+    }
+    @Override
+    public void onSpawnMonster(AbstractMonster monster) {
+        for(AbstractGene g: AberrationMod.geneList){
+            g.onSpawnMonster(monster,this);
+        }
+    }
+
+    @Override
+    public void onObtainCard(AbstractCard card){
+        for(AbstractGene g: AberrationMod.geneList){
+            g.onObtainCard(card,this);
         }
     }
 
@@ -117,7 +152,7 @@ public class aberrationGene extends CustomRelic implements CustomSavable<ArrayLi
             String tem = AberrationMod.getClassById(g.id);
             logger.info("restoring:"+tem);
             try {
-                AberrationMod.geneList.add((AbstractGene) Class.forName(tem).newInstance());
+                AberrationMod.AddGene((AbstractGene) Class.forName(tem).newInstance());
             } catch (InstantiationException e) {
                 throw new RuntimeException(e);
             } catch (IllegalAccessException e) {

@@ -12,7 +12,7 @@
     "TEXT": ["虚空", "畸变之源","purcolin"]
   },
   "aberration:ColdCard": {
-    "TEXT": ["寒裔", "", "造成伤害时给予等同于造成伤害层数的寒冷。"]
+    "TEXT": ["寒裔", "", "造成伤害时给予等同于造成伤害1/2的 aberration:寒冷 。"]
   },
   "aberration:ColdDescentGene": {
     "TEXT": ["寒裔基因","造成大于9的伤害时生成一个冰球", "每次造成伤害时，生成伤害数1/9的冰球"]
@@ -30,7 +30,7 @@
     "TEXT": ["虫灾：虫群", "“虫母”妃阿聂的子嗣。回归虫群，是世间一切的宿命","purcolin"]
   },
   "aberration:DeepCard": {
-    "TEXT": ["深渊", "", "给予随机敌人一层吞噬(吞噬其下回合意图） NL 消耗"]
+    "TEXT": ["深渊", "", "给予随机敌人一层吞噬,吞噬其一回合意图 NL 消耗"]
   },
   "aberration:DeepDescentGene": {
     "TEXT": ["深渊基因", "每有敌人血量降低其上限的一半时，获得一点力量、敏捷与集中"]
@@ -39,12 +39,51 @@
     "TEXT": ["渊泉：深渊", "“狱渊”撒旦的子嗣。坠入深渊！","purcolin"]
   },
   "aberration:ThornsCard": {
-    "TEXT": ["荆棘", "", "打出后获得三点荆棘 NL 消耗"]
+    "TEXT": ["荆棘", "", "打出后获得三点 荆棘 NL 消耗"]
   },
   "aberration:ThornsDescentGene": {
-    "TEXT": ["荆棘基因", "每当敌人受到非攻击伤害，获得相当于此次伤害1/3的尖刺(下取整)"]
+    "TEXT": ["荆棘基因", "每当敌人受到非攻击伤害，获得相当于此次伤害1/3的 荆棘 "]
   },
   "aberration:ThornsDescentPack": {
     "TEXT": ["荆凰：荆棘", "\"荆凰\"克窟的子嗣。感受荆棘的拥抱吧","purcolin"]
+  },
+  "aberration:CurseCard": {
+    "TEXT": ["咒巫", "", " NL 打出后向卡组添加一张嗜血诅咒 NL 被视为诅咒 "]
+  },
+  "aberration:CurseDescentGene": {
+    "TEXT": ["咒巫基因", "你的牌组中每有一张诅咒牌，你在战斗开始时就额外获得1点力量。获得时牌组中每一张诅咒以及每当你获得一张诅咒 ，将你的最大生命值提高 6"]
+  },
+  "aberration:CurseDescentPack": {
+    "TEXT": ["兑:咒巫", "\"咒怨\"祭的子嗣。古老东方的诅咒之力。","purcolin"]
+  },
+  "aberration:CurseDescentBloodthirsty": {
+    "TEXT": ["嗜血", "失去","点体力，抽一张牌 NL 消耗 "]
+  },
+  "aberration:ThunderCard": {
+    "TEXT": ["电离", "", "打出后生成2个闪电充能球"]
+  },
+  "aberration:ThunderDescentGene": {
+    "TEXT": ["电离基因", "你的闪电充能球在激发时额外获得一点能量"]
+  },
+  "aberration:ThunderDescentPack": {
+    "TEXT": ["震:电离", "夔","purcolin"]
+  },
+  "aberration:SeabornCard": {
+    "TEXT": ["海嗣", "", "给予1层 aberration:神经损伤 ，打出时每消耗1点 [E] 增加1层。"]
+  },
+  "aberration:SeabornDescentGene": {
+    "TEXT": ["海嗣基因", "每次造成伤害后，给予等同于伤害量1/5的 aberration:神经损伤 "]
+  },
+  "aberration:SeabornDescentPack": {
+    "TEXT": ["坎:海嗣", "伊祖米克","purcolin"]
+  },
+  "aberration:FlightCard": {
+    "TEXT": ["生翼", "", "再造成1点伤害"]
+  },
+  "aberration:FlightDescentGene": {
+    "TEXT": ["生翼基因", "你的每次攻击会对目标附加一次来源为目标自身且受你力量、敏捷与集中中最高一项加成的伤害"]
+  },
+  "aberration:FlightDescentPack": {
+    "TEXT": ["巽:生翼", "应龙","purcolin"]
   }
 }

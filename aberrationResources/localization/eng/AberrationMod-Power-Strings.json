@@ -83,6 +83,54 @@
   "DESCRIPTIONS": [
     "When damaged not by attack，Attacker gain Throns equivalent to the 1/3 of damage dealed.","Throns need to eat"
   ]
+  },
+  "aberration:CurseDescentMonsterPower": {
+    "NAME": "CurseDescent",
+    "DESCRIPTIONS": [
+      "Append 1 #yParasite to your deck on encounter."
+    ]
+  },
+  "aberration:CurseDescentBossPower": {
+    "NAME": "CurseDescentBoss-Shaman",
+    "DESCRIPTIONS": [
+      "Append 2 more #yParasite to your deck on encounter.","祭祀为艮"
+    ]
+  },
+  "aberration:ThunderDescentMonsterPower": {
+    "NAME": "ThunderDescent",
+    "DESCRIPTIONS": [
+      "give 1 #yParalysis if damage the player on each turn NL "," #byou have no paralysis"," #pCard played:",""
+    ]
+  },
+  "aberration:ThunderDescentBossPower": {
+    "NAME": "夔 (Kui)",
+    "DESCRIPTIONS": [
+      "Kui is a fantasy monster of ancient China, its appearance is often accompanied by wind and thunder as record. NL The basal threshold for paralysis is lowered to 3","其光如日月，其声如雷，其名曰夔。"
+    ]
+  },
+  "aberration:ThunderDescentParalysisPower": {
+    "NAME": "Paralysis",
+    "DESCRIPTIONS": [
+      "Increase 1 energy cost to a random card on hand after you play","card"
+    ]
+  },
+  "aberration:SeabornDescentMonsterPower": {
+    "NAME": "Seaborn",
+    "DESCRIPTIONS": [
+      "give you 1 #ySanityTrauma every turn 。 NL dodge every 3rd damage from creature with #ySanityTrauma NL "," #b you dont have #ySanityTrauma by now","#p Dodge next damage after #y"," #p times damaged"
+    ]
+  },
+  "aberration:SeabornDescentBossPower": {
+    "NAME": "生态泉源",
+    "DESCRIPTIONS": [
+      "被”生态泉源“伊祖米克以坎之力感染的畸变怪物。 NL Each turn, if owner's intent includes Attack give 1 more #ySanityTrauma ，if not give 2 more","临近进化奇点的完美生物，大群的建言者与引领者，“后生的初生”，海嗣。。"
+    ]
+  },
+  "aberration:SeabornDescentSanityPower": {
+    "NAME": "SanityTrauma",
+    "DESCRIPTIONS": [
+      "when accumulate to  #y"," ，exhaust all #ySanityTrauma , gain 20 #bElementDamage and 1 Weakness 。"
+    ]
   }
 }
 

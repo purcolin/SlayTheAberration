@@ -30,7 +30,8 @@ public class CancelButtonPatch {
     )
     public static void Insert(CancelButton __instance) {
         logger.info("=========================  cancel hook =========================");
-        if(AbstractDungeon.player.getRelic(injector.ID).checkTrigger()){
+        injector i = (injector) AbstractDungeon.player.getRelic(injector.ID);
+        if(i.isTrigged){
             AbstractDungeon.combatRewardScreen.reopen();
             logger.info(AbstractDungeon.screen);
 //            logger.info(AbstractDungeon.combatRewardScreen.rewards);

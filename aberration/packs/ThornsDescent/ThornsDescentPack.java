@@ -18,7 +18,7 @@ public class ThornsDescentPack extends AbstractAberrationPack{
     public static String ID = AberrationMod.makeID(ThornsDescentPack.class.getSimpleName());
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
-    private static final int[] avaliable = new int[] {0,1,2,3};
+    private static final int[] avaliable = new int[] {0,1,2};
     public ThornsDescentPack() {
         this.packID = ID;
         this.name = TEXT[0];
@@ -29,15 +29,16 @@ public class ThornsDescentPack extends AbstractAberrationPack{
         }
         this.card = new ThornsCard();
         this.gene = new ThornsDescentGene();
+        this.type = AberrationPackType.SEASONS;
         this.bossImage = TextureLoader.getTexture((makePowerPath("ColdDescentColdBoss.png")));
     }
     public void ApplyMonsterPower(AbstractMonster m){
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ThornsDescentMonsterPower(m, m, 1)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ThornsDescentMonsterPower(m, m)));
     }
 
     public void ApplyBossPower(AbstractMonster m){
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ThornsDescentBossPower(m, m, 1)));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ThornsDescentMonsterPower(m, m, 1)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ThornsDescentBossPower(m, m)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new ThornsDescentMonsterPower(m, m)));
     }
     static {
         uiStrings = CardCrawlGame.languagePack.getUIString(ID);

@@ -27,7 +27,7 @@ public class ThornsDescentThornsedPower extends AbstractPower {
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
     private AbstractCreature source;
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ThornsDescentThornsedPower.class.getSimpleName()+"32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ThornsDescentThornsedPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ThornsDescentThornsedPower.class.getSimpleName()+"32.png"));
 
 

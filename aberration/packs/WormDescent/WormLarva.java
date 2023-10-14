@@ -43,7 +43,7 @@ public class WormLarva extends AbstractMonster {
     }
 
     public WormLarva(float x, float y, boolean hard,int mh) {
-        super(NAME, ID, mh, 0.0F, -5.0F, 180.0F, 140.0F, (String)null, x-(float)Settings.WIDTH * 0.75F, y-AbstractDungeon.floorY);
+        super(NAME, ID, mh, 0.0F, -5.0F, 180.0F, 140.0F, (String)null, x, y);
         this.currentHealth = mh*1/2+1;
         this.loadAnimation("images/monsters/theBottom/louseGreen/skeleton.atlas", "images/monsters/theBottom/louseGreen/skeleton.json", 1.0F);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "idle", true);

@@ -46,5 +46,35 @@
   },
   "aberration:ThornsDescentPack": {
     "TEXT": ["ThornsDescentPack", "\"荆凰\"克窟的子嗣。感受荆棘的拥抱吧","purcolin"]
+  },
+  "aberration:CurseCard": {
+    "TEXT": ["Cursed", "", " NL Append a bloody curse to your deck NL curse "]
+  },
+  "aberration:CurseDescentGene": {
+    "TEXT": ["CurseDescentGene", "Each curse card on your deck give you 1 strength at battle start。When obtained this gene or append a curse to your deck ，Max HP increase by 6"]
+  },
+  "aberration:CurseDescentPack": {
+    "TEXT": ["Dui:Curse", "Dui is one of BaGua(Eight diagrams) of chinese traditional culture, which represents for lake originally, it's meaning can extend to poison, curse, etc.","purcolin"]
+  },
+  "aberration:CurseDescentBloodthirsty": {
+    "TEXT": ["BloodyThirsty", "lose","hp，gain 1 card NL exhaust NL curse"]
+  },
+  "aberration:ThunderCard": {
+    "TEXT": ["Thunder", "", "Channel 1 Lightning."]
+  },
+  "aberration:ThunderDescentGene": {
+    "TEXT": ["ThunderDescentGene", "Your Lightning gives you 1 energy on evoking."]
+  },
+  "aberration:ThunderDescentPack": {
+    "TEXT": ["Zhen:Thunder", "Zhen is one of BaGua(Eight diagrams) of chinese traditional culture, which represents for thunder originally","purcolin"]
+  },
+  "aberration:SeabornCard": {
+    "TEXT": ["Seaborn", "", "give 1 aberration:SanityTrauma ，every [E] to play this card increase the amount by 1."]
+  },
+  "aberration:SeabornDescentGene": {
+    "TEXT": ["SeabornDescentGene", "When append damage, give aberration:SanityTrauma, the amount is equivalent to 1/5 of the damage. "]
+  },
+  "aberration:SeabornDescentPack": {
+    "TEXT": ["Kan:Seaborn", "伊祖米克","purcolin"]
   }
 }

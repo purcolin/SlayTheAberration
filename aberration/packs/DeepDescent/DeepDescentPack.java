@@ -29,15 +29,16 @@ public class DeepDescentPack extends AbstractAberrationPack{
         }
         this.card = new DeepCard();
         this.gene = new DeepDescentGene();
+        this.type = AberrationPackType.SEASONS;
         this.bossImage = TextureLoader.getTexture((makePowerPath("DeepDescentDeepBoss.png")));
     }
     public void ApplyMonsterPower(AbstractMonster m){
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new DeepDescentMonsterPower(m, m, 1)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new DeepDescentMonsterPower(m, m)));
     }
 
     public void ApplyBossPower(AbstractMonster m){
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new DeepDescentBossPower(m, m, 1)));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new DeepDescentMonsterPower(m, m, 1)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new DeepDescentBossPower(m, m)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new DeepDescentMonsterPower(m, m)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,m,new DeepDescentDeepEyedPower(AbstractDungeon.player,m,1)));
     }
     static {

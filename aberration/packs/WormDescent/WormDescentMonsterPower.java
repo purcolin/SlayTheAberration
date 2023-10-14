@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -36,17 +37,13 @@ public class WormDescentMonsterPower extends AbstractPower {
     private AbstractCreature source;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(WormDescentMonsterPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(WormDescentMonsterPower.class.getSimpleName()+"32.png"));
-    public WormDescentMonsterPower(AbstractCreature owner, AbstractCreature source, int amount) {
+    public WormDescentMonsterPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.source = source;
-        this.amount = amount;
         this.priority = 100;
-        if (this.amount >= 1) {
-            this.amount = 1;
-        }
-        logger.info(this.ID);
+        this.amount = -1;
         this.updateDescription();
         this.type = PowerType.BUFF;
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
@@ -77,8 +74,8 @@ public class WormDescentMonsterPower extends AbstractPower {
                     AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SuicideAction(mon, false));
                     AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new WaitAction(1.0F));
                     AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SFXAction("SLIME_SPLIT"));
-                    AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SpawnMonsterAction(new WormLarva(mon.drawX-150F, mon.drawY+20.0F, true, mon.currentHealth/2), false));
-                    AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SpawnMonsterAction(new WormLarva(mon.drawX+150F, mon.drawY-8.0F, true, mon.currentHealth/2), false));
+                    AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SpawnMonsterAction(new WormLarva((mon.drawX-(float)Settings.WIDTH * 0.75F-100.0F)/Settings.xScale, (mon.drawY-AbstractDungeon.floorY+10.0F)/Settings.yScale, true, mon.currentHealth/2), false));
+                    AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SpawnMonsterAction(new WormLarva((mon.drawX-(float)Settings.WIDTH * 0.75F+100.0F)/Settings.xScale, (mon.drawY-AbstractDungeon.floorY-10.0F)/Settings.yScale, true, mon.currentHealth/2), false));
                     AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new CanLoseAction());
                 }
             }

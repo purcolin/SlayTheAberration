@@ -29,6 +29,7 @@ public class VoidPack extends AbstractAberrationPack{
         for(int i:avaliable){
             this.validDungeons.add(i);
         }
+        this.type = AberrationPackType.VOID;
     }
 
     public void ApplyBossPower(AbstractMonster m){

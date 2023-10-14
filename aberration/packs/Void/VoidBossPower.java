@@ -23,6 +23,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static aberration.AberrationMod.makePowerPath;
+import static aberration.AberrationMod.makeVoidPowerPath;
 
 public class VoidBossPower extends AbstractPower {
 
@@ -35,8 +36,8 @@ public class VoidBossPower extends AbstractPower {
     private int turn=0;
     int debuffs = 0;
     private AbstractCreature source;
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(WormDescentWormLarvaPower.class.getSimpleName()+".png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(WormDescentWormLarvaPower.class.getSimpleName()+"32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makeVoidPowerPath(VoidBossPower.class.getSimpleName()+".png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makeVoidPowerPath(VoidBossPower.class.getSimpleName()+"32.png"));
     public VoidBossPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
@@ -58,7 +59,7 @@ public class VoidBossPower extends AbstractPower {
         if (this.owner != null && !this.owner.isPlayer) {
             String desc = DESCRIPTIONS[0];
             for(int var0=1;var0<DESCRIPTIONS.length;var0++){
-                if(this.count>=var0-1){
+                if(this.count>=var0-1 && var0<DESCRIPTIONS.length-1){
                     desc += " #y";
                 }
                 desc+= DESCRIPTIONS[var0];

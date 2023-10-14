@@ -30,12 +30,12 @@ public class ColdDescentColdPower extends AbstractPower {
 
 
 
-    public ColdDescentColdPower(AbstractCreature owner, AbstractCreature source, int coldAmt) {
+    public ColdDescentColdPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.source = source;
-        this.amount = coldAmt;
+        this.amount = amount;
         if (this.amount >= 9999) {
             this.amount = 9999;
         }
@@ -68,13 +68,17 @@ public class ColdDescentColdPower extends AbstractPower {
             return damage;
         }
     }
+
+
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target){
+//        logger.info(damageAmount);
+        this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, damageAmount));
+    }
+
     static {
         powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
         NAME = powerStrings.NAME;
         DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target){
-        this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
-    }
 }
