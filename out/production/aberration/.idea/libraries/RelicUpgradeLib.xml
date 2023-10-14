@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="RelicUpgradeLib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../SteamLibrary/steamapps/workshop/content/646570/2769174299/RelicUpgradeLib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

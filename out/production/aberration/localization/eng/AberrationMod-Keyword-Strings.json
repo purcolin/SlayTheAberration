@@ -1,0 +1,46 @@
+[
+  {
+    "PROPER_NAME": "Cold",
+    "NAMES": [
+      "cold"
+    ],
+    "DESCRIPTION": "使攻击伤害降低，攻击后与回合结束时降低"
+  },
+  {
+    "PROPER_NAME": "麻痹",
+    "NAMES": [
+      "麻痹"
+    ],
+    "DESCRIPTION": "使攻击伤害降低1，攻击后与回合结束时降低"
+  },
+  {
+    "PROPER_NAME": "幼虫",
+    "NAMES": [
+      "幼虫"
+    ],
+    "DESCRIPTION": "死亡时，每有一个尸体对玩家造成一点伤害"
+  },
+  {
+    "PROPER_NAME": "吞噬",
+    "NAMES": [
+      "吞噬",
+      "吞生"
+    ],
+    "DESCRIPTION": "下一次打出的牌将被消耗"
+  },
+  {
+    "PROPER_NAME": "神经损伤",
+    "NAMES": [
+      "神经损伤"
+    ],
+    "DESCRIPTION": "每当神经损伤达到 #y5 层，给予目标 #y20 点元素伤害并给予一层 虚弱 "
+  },
+  {
+    "PROPER_NAME": "元素伤害",
+    "NAMES": [
+      "元素伤害"
+    ],
+    "DESCRIPTION": "无来源的伤害，元素损伤积累至一定程度后爆发，且数值一般无法被改变。"
+  }
+
+]

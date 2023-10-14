@@ -1,0 +1,17 @@
+{
+  "aberration:Injector": {
+    "NAME": "Injector",
+    "FLAVOR": "\"take ones, fake fans\" - Innocent Smoking King。",
+    "DESCRIPTIONS": [
+      "Take one to inject the power of abberation to cards, gain 1 after defeat a boss. NL Following Aberration will be in the Spire: NL "
+    ]
+  },
+  "aberration:AberrationGene": {
+    "NAME": "AberrationGene",
+    "FLAVOR": "Defeat them, become them。",
+    "DESCRIPTIONS": [
+      "Current Gene： NL ",
+      "You are SAFE by now"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+import aberration.AberrationMod;
+import aberration.packs.WormDescent.WormLarva;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public static final Logger logger = LogManager.getLogger(AberrationMod.class.getName());
+System.out.println("Hello World");
+logger.info(Settings.HEIGHT);
+AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SpawnMonsterAction(new WormLarva(0F, 0F), true));
+logger.info(AbstractDungeon.getCurrRoom().monsters.monsters.get(0).name);
