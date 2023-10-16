@@ -59,13 +59,13 @@ public class AberrationMod implements PostInitializeSubscriber,
     public static final Logger logger = LogManager.getLogger(AberrationMod.class.getName());
     public static ArrayList<AbstractAberrationPack> CurrentAberrationPacks = new ArrayList();
     public static ArrayList<AbstractAberrationPack> allPacks = new ArrayList();
-    public static ArrayList<AbstractPower> allAberrationPowers = new ArrayList();
+    public static ArrayList<String> allAberrationPowers = new ArrayList();
 
     public static ArrayList<AbstractAberrationPack> activatedPacks = new ArrayList();
     public static HashMap<String, AbstractAberrationPack> packsByID;
     public static HashMap<String, AbstractPower> powersByID;
 
-    public static Boolean IsShowAberrationScreen;
+    public static Boolean IsShowAberrationScreen = false;
     public static ArrayList<AbstractGene> geneList = new ArrayList<>();
     private static String modID = "aberration";
 
@@ -117,7 +117,7 @@ public class AberrationMod implements PostInitializeSubscriber,
         logger.info(Settings.scale);
         logger.info(Settings.xScale);
         logger.info(Settings.yScale);
-        logger.info(allAberrationPowers);
+        logger.info("1,5!"+allAberrationPowers);
         BaseMod.addCustomScreen(new AberrationShowScreen());
 
 //        BaseMod.addEvent(new AddEventParams.Builder(AfterKill.ID, AfterKill.class).create());
@@ -160,8 +160,7 @@ public class AberrationMod implements PostInitializeSubscriber,
     @Override
     public void receivePostDungeonInitialize() {
         logger.info("receive post dungeon initialize");
-        AbstractDungeon.isScreenUp = true;
-        BaseMod.openCustomScreen(AberrationShowScreen.Enum.ABERRATION_SHOW_SCREEN, CurrentAberrationPacks);
+        IsShowAberrationScreen = false;
 
     }
 
@@ -295,7 +294,7 @@ public class AberrationMod implements PostInitializeSubscriber,
                 throw new RuntimeException("Duplicate pack detected with ID: " + power.ID + ". Pack class 1: " + ((AbstractAberrationPack)packsByID.get(power.ID)).getClass().getName() + ", pack class 2: " + power.getClass().getName());
             } else if(power.ID!=null) {
                 powersByID.put(power.ID, power);
-                allAberrationPowers.add(power);
+                allAberrationPowers.add(power.ID);
             }
         });
     }

@@ -6,6 +6,7 @@ import aberration.packs.WormDescent.WormCard;
 import aberration.packs.WormDescent.WormDescentBossPower;
 import aberration.packs.WormDescent.WormDescentGene;
 import aberration.packs.WormDescent.WormDescentMonsterPower;
+import aberration.utils.TextureLoader;
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -16,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static aberration.AberrationMod.GetPowerClass;
+import static aberration.AberrationMod.makePowerPath;
 
 public class VoidPack extends AbstractAberrationPack{
     public static final Logger logger = LogManager.getLogger(VoidPack.class.getName());
@@ -33,6 +35,7 @@ public class VoidPack extends AbstractAberrationPack{
             this.validDungeons.add(i);
         }
         this.type = AberrationPackType.VOID;
+        this.bossImage = TextureLoader.getTexture("/images/packs/Void/Void.png");
         this.BossPower = GetPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","BossPower")));
     }
 

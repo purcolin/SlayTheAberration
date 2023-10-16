@@ -31,6 +31,9 @@ public class ColdDescentColdPower extends AbstractPower {
     public ColdDescentColdPower() {
         this.name = NAME;
         this.ID = POWER_ID;
+        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.updateDescription();
     }
 
     public ColdDescentColdPower(AbstractCreature owner, AbstractCreature source, int amount) {
@@ -51,10 +54,7 @@ public class ColdDescentColdPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        if (this.owner != null) {
             this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
-        }
-
     }
 
     public void atEndOfTurn(boolean isPlayer) {
@@ -74,7 +74,7 @@ public class ColdDescentColdPower extends AbstractPower {
 
 
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target){
-//        logger.info(damageAmount);
+        logger.info(damageAmount);
         this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, damageAmount));
     }
 

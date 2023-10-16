@@ -32,7 +32,7 @@ public class ThunderDescentPack extends AbstractAberrationPack{
         this.card = new ThunderCard();
         this.gene = new ThunderDescentGene();
         this.type = AberrationPackType.BA_GUA;
-        this.bossImage = TextureLoader.getTexture((makePowerPath(this.getClass().getSimpleName().replace("Pack","Boss.png"))));
+        this.bossImage = TextureLoader.getTexture(makePowerPath(this.getClass().getSimpleName().replace("Pack","Boss.png")));
         this.MonsterPower = GetPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","MonsterPower")));
         this.BossPower = GetPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","BossPower")));
     }

@@ -3,11 +3,14 @@ package aberration.relics;
 import aberration.AberrationMod;
 import aberration.packs.AbstractAberrationPack;
 import aberration.rewards.AberrationSource;
+import aberration.screens.AberrationShowScreen;
 import aberration.utils.TextureLoader;
+import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
 import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
+import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -29,7 +32,7 @@ import java.util.stream.Collectors;
 import static com.megacrit.cardcrawl.helpers.ImageMaster.loadImage;
 
 //public class injector extends CustomRelic implements CustomSavable<Integer> {
-public class injector extends CustomRelic{
+public class injector extends CustomRelic implements ClickableRelic {
     public static final String ID = "aberration:Injector";
     private static final int cost = 1;
     private boolean cardSelected = true; // A boolean to indicate whether or not we selected a card for injecting.
@@ -141,6 +144,14 @@ public class injector extends CustomRelic{
     @Override
     public void onMonsterDeath(AbstractMonster m) {
     }
+
+    public void onRightClick() {
+        if (this.isObtained) {
+            AbstractDungeon.isScreenUp = true;
+            BaseMod.openCustomScreen(AberrationShowScreen.Enum.ABERRATION_SHOW_SCREEN, AberrationMod.CurrentAberrationPacks);
+        }
+    }
+
 
 //    @Override
 //    public Integer onSave() {

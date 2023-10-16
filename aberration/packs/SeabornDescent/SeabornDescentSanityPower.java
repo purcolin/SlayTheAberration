@@ -36,6 +36,9 @@ public class SeabornDescentSanityPower extends AbstractPower {
     public SeabornDescentSanityPower() {
         this.name = NAME;
         this.ID = POWER_ID;
+        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.updateDescription();
     }
 
     public SeabornDescentSanityPower(AbstractCreature owner, AbstractCreature source, int amount) {
@@ -56,10 +59,7 @@ public class SeabornDescentSanityPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        if (this.owner != null) {
             this.description = DESCRIPTIONS[0] + this.max + DESCRIPTIONS[1];
-        }
-
     }
 
     public void onInitialApplication(){

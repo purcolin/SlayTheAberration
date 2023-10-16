@@ -35,6 +35,9 @@ public class DeepDescentDeepEyedPower extends AbstractPower {
     public DeepDescentDeepEyedPower() {
         this.name = NAME;
         this.ID = POWER_ID;
+        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.updateDescription();
     }
 
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(DeepDescentDeepEyedPower.class.getSimpleName()+".png"));
@@ -61,10 +64,7 @@ public class DeepDescentDeepEyedPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        if (this.owner != null) {
             this.description = DESCRIPTIONS[0];
-        }
-
     }
 
 

@@ -32,7 +32,8 @@ public class CurseDescentPack extends AbstractAberrationPack{
         this.card = new CurseCard();
         this.gene = new CurseDescentGene();
         this.type = AberrationPackType.BA_GUA;
-        this.bossImage = TextureLoader.getTexture((makePowerPath(this.getClass().getSimpleName().replace("Pack","Boss.png"))));
+        this.bossImage = TextureLoader.getTexture(makePowerPath(this.getClass().getSimpleName().replace("Pack","Boss.png")));
+        logger.info(makePowerPath(this.getClass().getSimpleName().replace("Pack","Boss.png")));
         this.MonsterPower = GetPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","MonsterPower")));
         this.BossPower = GetPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","BossPower")));
     }

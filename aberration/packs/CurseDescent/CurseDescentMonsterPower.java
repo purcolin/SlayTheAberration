@@ -33,6 +33,9 @@ public class CurseDescentMonsterPower extends AbstractPower {
     public CurseDescentMonsterPower() {
         this.name = NAME;
         this.ID = POWER_ID;
+        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.updateDescription();
     }
 
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(CurseDescentMonsterPower.class.getSimpleName()+".png"));
@@ -51,10 +54,7 @@ public class CurseDescentMonsterPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        if (this.owner != null && !this.owner.isPlayer) {
-            this.description = DESCRIPTIONS[0];
-        }
-
+        this.description = DESCRIPTIONS[0];
     }
 
     public void onInitialApplication() {

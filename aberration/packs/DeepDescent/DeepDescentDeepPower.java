@@ -33,6 +33,9 @@ public class DeepDescentDeepPower extends AbstractPower {
     public DeepDescentDeepPower() {
         this.name = NAME;
         this.ID = POWER_ID;
+        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.updateDescription();
     }
 
     private Boolean tried = false;
@@ -59,11 +62,19 @@ public class DeepDescentDeepPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        if (this.owner.isPlayer) {
-            this.description = DESCRIPTIONS[0]+this.amount+DESCRIPTIONS[1];
-        }else {
-            this.description = DESCRIPTIONS[2]+this.amount+DESCRIPTIONS[3];
+        try {
+            //  要尝试的代码块
+            if (this.owner.isPlayer) {
+                this.description = DESCRIPTIONS[0]+this.amount+DESCRIPTIONS[1];
+            }else {
+                this.description = DESCRIPTIONS[2]+this.amount+DESCRIPTIONS[3];
+            }
         }
+        catch(NullPointerException e) {
+            //  处理错误的代码块
+            this.description = "For Player:"+DESCRIPTIONS[0]+this.amount+DESCRIPTIONS[1] + " NL For Monster:" +DESCRIPTIONS[2]+this.amount+DESCRIPTIONS[3];
+        }
+
 
     }
 

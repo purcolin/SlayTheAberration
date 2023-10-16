@@ -42,6 +42,9 @@ public class VoidBossPower extends AbstractPower {
     public VoidBossPower() {
         this.name = NAME;
         this.ID = POWER_ID;
+        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.updateDescription();
     }
 
     public VoidBossPower(AbstractCreature owner, AbstractCreature source) {
@@ -58,7 +61,6 @@ public class VoidBossPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        logger.info(this.count);
         if (this.owner != null && !this.owner.isPlayer) {
             String desc = DESCRIPTIONS[0];
             for(int var0=1;var0<DESCRIPTIONS.length;var0++){
@@ -67,8 +69,10 @@ public class VoidBossPower extends AbstractPower {
                 }
                 desc+= DESCRIPTIONS[var0];
             }
-            logger.info(desc);
             this.description = desc;
+        }else {
+            this.description =  DESCRIPTIONS[0]+ DESCRIPTIONS[1]+ DESCRIPTIONS[2]+ DESCRIPTIONS[3]+ DESCRIPTIONS[4];
+
         }
 
     }

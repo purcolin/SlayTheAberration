@@ -33,6 +33,9 @@ public class CurseDescentBossPower extends AbstractPower {
     public CurseDescentBossPower() {
         this.name = NAME;
         this.ID = POWER_ID;
+        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.updateDescription();
     }
 
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(CurseDescentBossPower.class.getSimpleName()+".png"));
@@ -51,10 +54,7 @@ public class CurseDescentBossPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        if (this.owner != null && !this.owner.isPlayer) {
             this.description = DESCRIPTIONS[0];
-        }
-
     }
     public void onInitialApplication() {
         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect((AbstractCard)new CurseDescentBloodthirsty(), Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));

@@ -2,7 +2,7 @@
   "aberration:VoidBossPower": {
     "NAME": "虚空",
     "DESCRIPTIONS": [
-      "根据玩家的基因数量获得额外效果: NL ","0:受到的伤害减少20% NL ","1:获得等同于自身同时拥有最多减益效果数的力量 NL ","2: 坚不可摧降低50 NL ","3: 死亡律动每第三回合增加一层 NL ","#b\"畸变的来源\""
+      "根据玩家的基因数量获得额外效果: NL ","0:受到的伤害减少20% NL ","1:获得等同于自身同时拥有最多减益效果数的力量  NL ","2: 坚不可摧降低50  NL ","3: 死亡律动每第三回合增加一层  NL ","#b\"畸变的来源\""
     ]
   },
   "aberration:ColdDescentMonsterPower": {
@@ -51,7 +51,7 @@
   "aberration:DeepDescentBossPower": {
     "NAME": "深层狱渊",
     "DESCRIPTIONS": [
-      "被“狱渊”撒旦以兑之力感染的畸变怪物。 NL 每当玩家有不同类别的牌被消耗时，获得3点 力量 ","深渊在吞噬你"
+      "被“狱渊”撒旦以兑之力感染的畸变怪物。 NL 向玩家添加 #y深渊凝视 ：每当玩家有不同类别的牌被消耗时，获得3点 力量 ","深渊在吞噬你"
     ]
   },
   "aberration:DeepDescentDeepEyedPower": {
@@ -111,7 +111,7 @@
   "aberration:ThunderDescentParalysisPower": {
     "NAME": "麻痹",
     "DESCRIPTIONS": [
-      "每打出","张牌，使手牌中随机一张牌的费用增加一点。"
+      "每打出","张牌，使手牌中随机一张牌的费用增加一点。"," #y6（boss为3）-麻痹层数 "
     ]
   },
   "aberration:SeabornDescentMonsterPower": {

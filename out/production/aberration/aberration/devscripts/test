@@ -1,14 +1,15 @@
 import aberration.AberrationMod;
-import aberration.packs.WormDescent.WormLarva;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+
+import aberration.packs.WormDescent.WormDescentMonsterPower;
+import aberration.packs.WormDescent.WormDescentPack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import basemod.BaseMod;
 
-public static final Logger logger = LogManager.getLogger(AberrationMod.class.getName());
+// public static final Logger logger = LogManager.getLogger(CurseDescentPack.class.getName());
 System.out.println("Hello World");
-logger.info(Settings.HEIGHT);
-AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new SpawnMonsterAction(new WormLarva(0F, 0F), true));
-logger.info(AbstractDungeon.getCurrRoom().monsters.monsters.get(0).name);
+System.out.println(Settings.HEIGHT);
+System.out.println(WormDescentMonsterPower.POWER_ID);
+System.out.println(AberrationMod.makeID(WormDescentPack.class.getSimpleName().replace("Pack","MonsterPower")));
+System.out.println(BaseMod.getPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","MonsterPower"))));
+System.out.println(BaseMod.getPowerKeys());

@@ -30,6 +30,8 @@ public class FlightDescentFlightPower extends AbstractPower {
     public FlightDescentFlightPower() {
         this.name = NAME;
         this.ID = POWER_ID;
+        this.loadRegion("flight");
+        this.updateDescription();
     }
 
     private int storedAmount;

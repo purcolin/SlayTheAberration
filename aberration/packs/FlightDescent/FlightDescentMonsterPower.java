@@ -31,6 +31,9 @@ public class FlightDescentMonsterPower extends AbstractPower {
     public FlightDescentMonsterPower() {
         this.name = NAME;
         this.ID = POWER_ID;
+        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.updateDescription();
     }
 
     public FlightDescentMonsterPower(AbstractCreature owner, AbstractCreature source) {
@@ -47,9 +50,7 @@ public class FlightDescentMonsterPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        if (this.owner != null && !this.owner.isPlayer) {
             this.description = DESCRIPTIONS[0];
-        }
     }
 
     @Override

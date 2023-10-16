@@ -30,7 +30,7 @@ public class AbstractAberrationPack {
 
     public boolean Void = false;
     public ArrayList<Integer> validDungeons = new ArrayList<Integer>();
-    public Texture bossImage = TextureLoader.getTexture((makePowerPath("WormDescentWormBoss.png")));
+    public Texture bossImage;
     public AbstractAberrationPack() {
         this.initializePack();
     }

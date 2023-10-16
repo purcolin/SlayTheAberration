@@ -1,6 +1,8 @@
 package aberration.patch;
 
 import aberration.AberrationMod;
+import aberration.screens.AberrationShowScreen;
+import basemod.BaseMod;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
@@ -22,5 +24,9 @@ public class NeowRoomPatch {
     public static void Prefix(NeowRoom __instance) {
 //        logger.info("=========================  neow room hook =========================");
 //        logger.info(AbstractDungeon.screen);
+        if(!AberrationMod.IsShowAberrationScreen){
+            AbstractDungeon.isScreenUp = true;
+            BaseMod.openCustomScreen(AberrationShowScreen.Enum.ABERRATION_SHOW_SCREEN, AberrationMod.CurrentAberrationPacks);
+        }
     }
 }

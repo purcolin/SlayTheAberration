@@ -49,6 +49,9 @@ public class ThunderDescentMonsterPower extends AbstractPower {
     public ThunderDescentMonsterPower() {
         this.name = NAME;
         this.ID = POWER_ID;
+        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        this.updateDescription();
     }
 
     public ThunderDescentMonsterPower(AbstractCreature owner, AbstractCreature source) {
@@ -71,6 +74,8 @@ public class ThunderDescentMonsterPower extends AbstractPower {
             }else {
                 this.description = DESCRIPTIONS[0]+DESCRIPTIONS[1];
             }
+        }else {
+            this.description = DESCRIPTIONS[0];
         }
 
     }
