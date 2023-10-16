@@ -46,15 +46,12 @@ public class DeepDescentDeepEyedPower extends AbstractPower {
     private static ArrayList<AbstractCard.CardType> used = new ArrayList<>();
 
 
-    public DeepDescentDeepEyedPower(AbstractCreature owner, AbstractCreature source, int amount) {
+    public DeepDescentDeepEyedPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.source = source;
-        this.amount = amount;
-        if (this.amount >= 999) {
-            this.amount = 999;
-        }
+        this.amount = -1;
         this.updateDescription();
         this.type = PowerType.DEBUFF;
         this.isTurnBased = true;

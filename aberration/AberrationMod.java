@@ -14,6 +14,7 @@ import basemod.devcommands.ConsoleCommand;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.google.gson.Gson;
@@ -77,6 +78,10 @@ public class AberrationMod implements PostInitializeSubscriber,
         setModID("aberration");
     }
 
+    // ====== NO EDIT AREA ======
+    // DON'T TOUCH THIS STUFF. IT IS HERE FOR STANDARDIZATION BETWEEN MODS AND TO ENSURE GOOD CODE PRACTICES.
+    // IF YOU MODIFY THIS I WILL HUNT YOU DOWN AND DOWNVOTE YOUR MOD ON WORKSHOP
+
     public static void setModID(String ID) { // DON'T EDIT
         Gson coolG = new Gson(); // EY DON'T EDIT THIS
         //   String IDjson = Gdx.files.internal("IDCheckStringsDONT-EDIT-AT-ALL.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i hate u Gdx.files
@@ -93,10 +98,28 @@ public class AberrationMod implements PostInitializeSubscriber,
         logger.info("Success! ID is " + modID); // WHY WOULD U WANT IT NOT TO LOG?? DON'T EDIT THIS.
     } // NO
 
-    public static String getModID(){
-        return modID;
-    }
+    public static String getModID() { // NO
+        return modID; // DOUBLE NO
+    } // NU-UH
 
+    private static void pathCheck() { // ALSO NO
+        Gson coolG = new Gson(); // NOPE DON'T EDIT THIS
+        //   String IDjson = Gdx.files.internal("IDCheckStringsDONT-EDIT-AT-ALL.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i still hate u btw Gdx.files
+        InputStream in = AberrationMod.class.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json"); // DON'T EDIT THISSSSS
+        IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // NAH, NO EDIT
+        String packageName = AberrationMod.class.getPackage().getName(); // STILL NO EDIT ZONE
+        FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources"); // PLEASE DON'T EDIT THINGS HERE, THANKS
+        if (!modID.equals(EXCEPTION_STRINGS.DEVID)) { // LEAVE THIS EDIT-LESS
+            if (!packageName.equals(getModID())) { // NOT HERE ETHER
+                throw new RuntimeException(EXCEPTION_STRINGS.PACKAGE_EXCEPTION + getModID()); // THIS IS A NO-NO
+            } // WHY WOULD U EDIT THIS
+            if (!resourcePathExists.exists()) { // DON'T CHANGE THIS
+                throw new RuntimeException(EXCEPTION_STRINGS.RESOURCE_FOLDER_EXCEPTION + getModID() + "Resources"); // NOT THIS
+            }// NO
+        }// NO
+    }// NO
+
+    // ====== YOU CAN EDIT AGAIN ======
 
     public static void initialize() {
         logger.info("========================= Initializing Aberration. =========================");
@@ -117,6 +140,8 @@ public class AberrationMod implements PostInitializeSubscriber,
         logger.info(Settings.scale);
         logger.info(Settings.xScale);
         logger.info(Settings.yScale);
+        logger.info(Settings.WIDTH);
+        logger.info(Settings.HEIGHT);
         logger.info("1,5!"+allAberrationPowers);
         BaseMod.addCustomScreen(new AberrationShowScreen());
 

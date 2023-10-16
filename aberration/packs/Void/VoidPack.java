@@ -35,7 +35,7 @@ public class VoidPack extends AbstractAberrationPack{
             this.validDungeons.add(i);
         }
         this.type = AberrationPackType.VOID;
-        this.bossImage = TextureLoader.getTexture("/images/packs/Void/Void.png");
+        this.bossImage = TextureLoader.getTexture("aberrationResources/images/packs/Void/Void.png");
         this.BossPower = GetPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","BossPower")));
     }
 

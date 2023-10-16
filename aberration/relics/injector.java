@@ -146,7 +146,7 @@ public class injector extends CustomRelic implements ClickableRelic {
     }
 
     public void onRightClick() {
-        if (this.isObtained) {
+        if (this.isObtained&&!AbstractDungeon.isScreenUp) {
             AbstractDungeon.isScreenUp = true;
             BaseMod.openCustomScreen(AberrationShowScreen.Enum.ABERRATION_SHOW_SCREEN, AberrationMod.CurrentAberrationPacks);
         }

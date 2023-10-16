@@ -21,5 +21,6 @@
     <orderEntry type="library" name="yUi" level="project" />
     <orderEntry type="library" name="RelicStats" level="project" />
     <orderEntry type="library" name="intentgraph" level="project" />
+    <orderEntry type="library" name="loadout" level="project" />
   </component>
 </module>

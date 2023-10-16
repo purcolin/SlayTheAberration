@@ -9,7 +9,7 @@
     "TEXT": ["注入至一张卡牌(消耗1个注射器)","你当前没有注射器"]
   },
   "aberration:VoidPack": {
-    "TEXT": ["虚空", "畸变之源","purcolin"]
+    "TEXT": ["虚 空", "畸变之源","purcolin"]
   },
   "aberration:ColdCard": {
     "TEXT": ["寒裔", "", "造成伤害时给予等同于造成伤害1/2的 aberration:寒冷 。"]

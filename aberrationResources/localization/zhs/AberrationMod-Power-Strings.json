@@ -51,7 +51,7 @@
   "aberration:DeepDescentBossPower": {
     "NAME": "深层狱渊",
     "DESCRIPTIONS": [
-      "被“狱渊”撒旦以兑之力感染的畸变怪物。 NL 向玩家添加 #y深渊凝视 ：每当玩家有不同类别的牌被消耗时，获得3点 力量 ","深渊在吞噬你"
+      "被“狱渊”撒旦以兑之力感染的畸变怪物。 NL 向玩家添加 #y深渊凝视 ：每种类别一次，当该种类别的牌被消耗时，给予所有怪物3点 力量 ","深渊在吞噬你"
     ]
   },
   "aberration:DeepDescentDeepEyedPower": {

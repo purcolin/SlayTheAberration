@@ -28,6 +28,8 @@ public class ColdDescentColdPower extends AbstractPower {
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ColdDescentColdPower.class.getSimpleName()+"32.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ColdDescentColdPower.class.getSimpleName()+"32.png"));
 
+    private static Integer stackAmount;
+
     public ColdDescentColdPower() {
         this.name = NAME;
         this.ID = POWER_ID;
@@ -65,7 +67,13 @@ public class ColdDescentColdPower extends AbstractPower {
     }
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
+        logger.info(damage);
         if (type == DamageInfo.DamageType.NORMAL) {
+            if(damage-this.amount >= 0){
+                this.stackAmount = this.amount;
+            }else {
+                this.stackAmount = (int)damage;
+            }
             return damage - this.amount;
         } else {
             return damage;
@@ -75,7 +83,7 @@ public class ColdDescentColdPower extends AbstractPower {
 
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target){
         logger.info(damageAmount);
-        this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, damageAmount));
+        this.addToBot(new ReducePowerAction(this.owner,this.source, POWER_ID, this.stackAmount));
     }
 
     static {

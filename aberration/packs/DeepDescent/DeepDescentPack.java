@@ -43,7 +43,7 @@ public class DeepDescentPack extends AbstractAberrationPack{
     public void ApplyBossPower(AbstractMonster m){
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new DeepDescentBossPower(m, m)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new DeepDescentMonsterPower(m, m)));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,m,new DeepDescentDeepEyedPower(AbstractDungeon.player,m,1)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,m,new DeepDescentDeepEyedPower(AbstractDungeon.player,m)));
     }
     static {
 //        logger.info(ID);

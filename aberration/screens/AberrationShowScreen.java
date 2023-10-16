@@ -13,12 +13,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.TipHelper;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.screens.compendium.RelicViewScreen;
-import com.megacrit.cardcrawl.ui.buttons.ProceedButton;
-import loadout.screens.MonsterSelectScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.badlogic.gdx.graphics.Color;
@@ -39,9 +33,12 @@ public class AberrationShowScreen extends CustomScreen {
 
     public static Integer count;
 
+    private static int i = 0;
     public static String TEXT = "尖塔遴选了它的畸变";
 
     private static boolean drawn = false;
+    private static boolean hovering = false;
+    public ArrayList<AbstractAberrationPack> packs;
 
     public AberrationShowScreen(){
     }
@@ -54,18 +51,8 @@ public class AberrationShowScreen extends CustomScreen {
     private void open(ArrayList<AbstractAberrationPack> packs) {
         this.hbs.clear();
         this.images.clear();
-        logger.info("x:"+Settings.xScale+"y:"+Settings.yScale);
-        logger.info("W:"+Settings.WIDTH+"H:"+Settings.HEIGHT);
-//        AbstractAberrationPack p = packs.get(0);
-//        image0 = packs.get(0).bossImage;
-//        image1 = packs.get(1).bossImage;
-//        image2 = packs.get(2).bossImage;
-        AbstractAberrationPack p;
-        Iterator var1 = packs.iterator();
-        while(var1.hasNext()) {
-            p = (AbstractAberrationPack) var1.next();
-            items.add(new AberrationShowItem(p.bossImage,p));
-        }
+        this.items.clear();
+        this.packs = packs;
 //        image0 = packs.get(0).bossImage;
 //        logger.info(p.name);
 //        logger.info(p.BossPower);
@@ -88,8 +75,15 @@ public class AberrationShowScreen extends CustomScreen {
         AberrationMod.IsShowAberrationScreen = true;
         AbstractDungeon.screen = curScreen();
         AbstractDungeon.isScreenUp = true;
-//        AbstractDungeon.overlayMenu.proceedButton.show();
+        AbstractAberrationPack p;
         this.count = 0;
+        Iterator var1 = packs.iterator();
+        while(var1.hasNext()) {
+            p = (AbstractAberrationPack) var1.next();
+            items.add(new AberrationShowItem(p.bossImage,p,80.0F + 450.0F*this.count*Settings.xScale, - 164.0F*Settings.yScale));
+            count ++;
+        }
+        logger.info(items);
 
         AbstractDungeon.overlayMenu.cancelButton.show("返回");
     }
@@ -104,35 +98,36 @@ public class AberrationShowScreen extends CustomScreen {
     // ...
     @Override
     public void close() {
-
         AbstractDungeon.isScreenUp = false;
         genericScreenOverlayReset();
     }
 
     @Override
     public void update() {
-        for(int i=0;i<hbs.size();i++){
-            hbs.get(i).update();
+        for(int i=0;i<items.size();i++){
+            items.get(i).update();
         }
     }
 
     @Override
     public void render(SpriteBatch sb) {
-//        logger.info("rendering");
-//        if(!drawn){
-
-//            logger.info("drawing");
-            sb.setColor(new Color(1.0F, 1.0F, 1.0F, 1.0F));
+        if(!drawn&&i<100){
             FontHelper.renderFont(sb, FontHelper.prepFont(80.0F,false), TEXT, (float)Settings.WIDTH/2 -360.0F*Settings.xScale,(float)Settings.HEIGHT - 190.0F*Settings.yScale, Settings.CREAM_COLOR);
-//            sb.draw(image0,(float)Settings.WIDTH / 2.0F - 960.0F , (float)Settings.HEIGHT / 2.0F - 300.0F, 960.0F, 600.0F, 650.0F* Settings.xScale, 867.0F* Settings.yScale, Settings.xScale, Settings.yScale, 0.0F, 0, 0, 650, 867, false, false);
-//            sb.draw(image1,(float)Settings.WIDTH / 2.0F - 960.0F + 300.0F, (float)Settings.HEIGHT / 2.0F - 300.0F, 960.0F, 600.0F, 650.0F* Settings.xScale, 867.0F* Settings.yScale, Settings.xScale, Settings.yScale, 0.0F, 0, 0, 650, 867, false, false);
-//            sb.draw(image2,(float)Settings.WIDTH / 2.0F - 960.0F + 300.0F*2, (float)Settings.HEIGHT / 2.0F - 300.0F, 960.0F, 600.0F, 650.0F* Settings.xScale, 867.0F* Settings.yScale, Settings.xScale, Settings.yScale, 0.0F, 0, 0, 650, 867, false, false);
-             for(Iterator<AberrationShowItem> it = items.iterator(); it.hasNext(); ++this.count) {
-                 AberrationShowItem image =it.next();
-                 image.x = (float)Settings.WIDTH / 2.0F - 960.0F + 300.0F* Settings.xScale*this.count;
-                 image.y = (float)Settings.HEIGHT / 2.0F - 300.0F*Settings.yScale;
-                 image.render(sb);
-             }
+            i++;
+        }else {
+            drawn=true;
+        }
+        sb.setColor(new Color(1.0F, 1.0F, 1.0F, 1.0F));
+        //        sb.draw(image0,(float)Settings.WIDTH / 2.0F - 960.0F , (float)Settings.HEIGHT / 2.0F - 300.0F, 960.0F, 600.0F, 650.0F, 867.0F, Settings.xScale, Settings.yScale, 0.0F, 0, 0, 650, 867, false, false);
+//        sb.draw(image1,(float)Settings.WIDTH / 2.0F - 960.0F + 300.0F, (float)Settings.HEIGHT / 2.0F - 300.0F, 960.0F, 600.0F, 650.0F, 867.0F, Settings.xScale, Settings.yScale, 0.0F, 0, 0, 650, 867, false, false);
+//        sb.draw(image2,(float)Settings.WIDTH / 2.0F - 960.0F + 300.0F*2, (float)Settings.HEIGHT / 2.0F - 300.0F, 960.0F, 600.0F, 650.0F, 867.0F, Settings.xScale, Settings.yScale, 0.0F, 0, 0, 650, 867, false, false);
+
+        for(int i=0;i<4;i++) {
+             AberrationShowItem image =items.get(i);
+//             image.renderHover(sb,hovering);
+             image.render(sb);
+        }
+
 //            for(int i=0;i<images.size();i++){
 //            Hitbox hb = hbs.get(i);
 //                sb.draw(images.get(i),(float)Settings.WIDTH / 2.0F - 960.0F + 700.0F*i, (float)Settings.HEIGHT / 2.0F - 600.0F, 960.0F, 600.0F, 650.0F* Settings.xScale, 867.0F* Settings.yScale, Settings.xScale, Settings.yScale, 0.0F, 0, 0, 650, 867, false, false);
@@ -143,8 +138,7 @@ public class AberrationShowScreen extends CustomScreen {
 //                sb.setBlendFunction(770, 771);
 //                FontHelper.renderFont(sb, FontHelper.prepFont(40.0F,false), AberrationMod.CurrentAberrationPacks.get(i).name, x+i*400.0F* Settings.scale,(float)Settings.HEIGHT / 2.0F - 46.0F * Settings.scale - 433.5F* Settings.scale, Settings.CREAM_COLOR);
 //            }
-            }
-
+//            }
 //            drawn = true;
 //        }else {
 //            for(int i=0;i<images.size();i++){
@@ -157,10 +151,7 @@ public class AberrationShowScreen extends CustomScreen {
 //                    FontHelper.renderFont(sb, FontHelper.prepFont(40.0F,false), AberrationMod.CurrentAberrationPacks.get(i).name, x+i*400.0F* Settings.scale,(float)Settings.HEIGHT / 2.0F - 46.0F * Settings.scale - 433.5F* Settings.scale, Settings.CREAM_COLOR);
 //                }
 //            }
-//        }
-
-
-//    }
+    }
 
     public static class Enum {
         @SpireEnum
