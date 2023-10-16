@@ -31,6 +31,10 @@ public class ThornsDescentThornsedPower extends AbstractPower {
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ThornsDescentThornsedPower.class.getSimpleName()+"32.png"));
 
 
+    public ThornsDescentThornsedPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
 
     public ThornsDescentThornsedPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.name = NAME;

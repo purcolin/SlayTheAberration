@@ -26,6 +26,12 @@ public class FlightDescentFlightPower extends AbstractPower {
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
     private AbstractCreature source;
+
+    public FlightDescentFlightPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
+
     private int storedAmount;
     public FlightDescentFlightPower(AbstractCreature owner, int amount) {
         this.name = NAME;

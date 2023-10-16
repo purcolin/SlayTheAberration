@@ -26,6 +26,12 @@ public class DeepDescentMonsterPower extends AbstractPower {
     private AbstractCreature source;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(DeepDescentMonsterPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(DeepDescentMonsterPower.class.getSimpleName()+"32.png"));
+
+    public DeepDescentMonsterPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
+
     public DeepDescentMonsterPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;

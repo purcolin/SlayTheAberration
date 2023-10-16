@@ -33,6 +33,11 @@ public class SeabornDescentSanityPower extends AbstractPower {
 
     public static final Integer max = 5;
 
+    public SeabornDescentSanityPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
+
     public SeabornDescentSanityPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;

@@ -3,6 +3,7 @@ package aberration.packs.CurseDescent;
 import aberration.AberrationMod;
 import aberration.packs.AbstractAberrationPack;
 import aberration.utils.TextureLoader;
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static aberration.AberrationMod.GetPowerClass;
 import static aberration.AberrationMod.makePowerPath;
 
 public class CurseDescentPack extends AbstractAberrationPack{
@@ -30,7 +32,9 @@ public class CurseDescentPack extends AbstractAberrationPack{
         this.card = new CurseCard();
         this.gene = new CurseDescentGene();
         this.type = AberrationPackType.BA_GUA;
-        this.bossImage = TextureLoader.getTexture((makePowerPath("ColdDescentColdBoss.png")));
+        this.bossImage = TextureLoader.getTexture((makePowerPath(this.getClass().getSimpleName().replace("Pack","Boss.png"))));
+        this.MonsterPower = GetPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","MonsterPower")));
+        this.BossPower = GetPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","BossPower")));
     }
     public void ApplyMonsterPower(AbstractMonster m){
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new CurseDescentMonsterPower(m, m)));

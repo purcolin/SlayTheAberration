@@ -25,6 +25,12 @@ public class ThunderDescentBossPower extends AbstractPower {
     private AbstractCreature source;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ThunderDescentBossPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ThunderDescentBossPower.class.getSimpleName()+"32.png"));
+
+    public ThunderDescentBossPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
+
     public ThunderDescentBossPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;

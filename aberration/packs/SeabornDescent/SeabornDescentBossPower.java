@@ -27,6 +27,12 @@ public class SeabornDescentBossPower extends AbstractPower {
     private AbstractMonster monster;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(SeabornDescentBossPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(SeabornDescentBossPower.class.getSimpleName()+"32.png"));
+
+    public SeabornDescentBossPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
+
     public SeabornDescentBossPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;

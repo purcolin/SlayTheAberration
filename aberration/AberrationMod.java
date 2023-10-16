@@ -3,6 +3,7 @@ import aberration.commands.Aberration;
 import aberration.packs.AbstractAberrationPack;
 import aberration.packs.AbstractGene;
 import aberration.packs.Void.VoidPack;
+import aberration.screens.AberrationShowScreen;
 import aberration.utils.AberrationHooks;
 import aberration.relics.aberrationGene;
 import aberration.relics.injector;
@@ -22,6 +23,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import basemod.BaseMod;
@@ -57,9 +59,11 @@ public class AberrationMod implements PostInitializeSubscriber,
     public static final Logger logger = LogManager.getLogger(AberrationMod.class.getName());
     public static ArrayList<AbstractAberrationPack> CurrentAberrationPacks = new ArrayList();
     public static ArrayList<AbstractAberrationPack> allPacks = new ArrayList();
+    public static ArrayList<AbstractPower> allAberrationPowers = new ArrayList();
 
     public static ArrayList<AbstractAberrationPack> activatedPacks = new ArrayList();
     public static HashMap<String, AbstractAberrationPack> packsByID;
+    public static HashMap<String, AbstractPower> powersByID;
 
     public static Boolean IsShowAberrationScreen;
     public static ArrayList<AbstractGene> geneList = new ArrayList<>();
@@ -106,13 +110,15 @@ public class AberrationMod implements PostInitializeSubscriber,
         logger.info("receive post initialize");
         ConsoleCommand.addCommand("aberration", Aberration.class);
         declarePacks();
+        declarePowers();
         logger.info("Full list of packs: " + allPacks.stream().map((pack) -> {
             return pack.name;
         }).collect(Collectors.toList()));
         logger.info(Settings.scale);
         logger.info(Settings.xScale);
         logger.info(Settings.yScale);
-//        BaseMod.addCustomScreen(new AberrationShowScreen());
+        logger.info(allAberrationPowers);
+        BaseMod.addCustomScreen(new AberrationShowScreen());
 
 //        BaseMod.addEvent(new AddEventParams.Builder(AfterKill.ID, AfterKill.class).create());
 
@@ -154,8 +160,8 @@ public class AberrationMod implements PostInitializeSubscriber,
     @Override
     public void receivePostDungeonInitialize() {
         logger.info("receive post dungeon initialize");
-//        AbstractDungeon.isScreenUp = true;
-//        BaseMod.openCustomScreen(AberrationShowScreen.Enum.ABERRATION_SHOW_SCREEN, allPacks);
+        AbstractDungeon.isScreenUp = true;
+        BaseMod.openCustomScreen(AberrationShowScreen.Enum.ABERRATION_SHOW_SCREEN, CurrentAberrationPacks);
 
     }
 
@@ -281,6 +287,28 @@ public class AberrationMod implements PostInitializeSubscriber,
         });
     }
 
+    public static void declarePowers() {
+        powersByID = new HashMap();
+        (new AutoAdd("aberration")).packageFilter(AbstractAberrationPack.class).any(AbstractPower.class, (info, power) -> {
+            logger.info(power.name);
+            if (powersByID.containsKey(power.ID)) {
+                throw new RuntimeException("Duplicate pack detected with ID: " + power.ID + ". Pack class 1: " + ((AbstractAberrationPack)packsByID.get(power.ID)).getClass().getName() + ", pack class 2: " + power.getClass().getName());
+            } else if(power.ID!=null) {
+                powersByID.put(power.ID, power);
+                allAberrationPowers.add(power);
+            }
+        });
+    }
+    public static Class<? extends AbstractPower> GetPowerClass(String pid){
+        try {
+            Class<? extends AbstractPower> pClass = powersByID.get(pid).getClass();
+            return pClass;
+        } catch (Exception|Error e) {
+            logger.info("Failed to create a button for " + pid);
+            return null;
+        }
+    }
+
     public static AbstractAberrationPack getRandomPackFromAll(Random rng) {
         return (AbstractAberrationPack)allPacks.get(rng.random(0, allPacks.size() - 1));
     }
@@ -331,7 +359,6 @@ public class AberrationMod implements PostInitializeSubscriber,
     public static String makePowerPath(String resourcePath) {
         String[] var0 = resourcePath.split("Descent");
         String var2 = var0[0] + "Descent";
-        String var3 = var0[1];
         String output = "aberrationResources/images/packs/"+var2+"/"+resourcePath;
         return output;
     }

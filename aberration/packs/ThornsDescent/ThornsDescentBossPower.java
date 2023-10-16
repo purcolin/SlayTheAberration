@@ -28,6 +28,12 @@ public class ThornsDescentBossPower extends AbstractPower {
     private AbstractCreature source;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ThornsDescentBossPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ThornsDescentBossPower.class.getSimpleName()+"32.png"));
+
+    public ThornsDescentBossPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
+
     public ThornsDescentBossPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;
@@ -54,7 +60,7 @@ public class ThornsDescentBossPower extends AbstractPower {
 
 
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if(damageAmount>0){
+        if(damageAmount>0&&info.type== DamageInfo.DamageType.NORMAL){
             addToBot((AbstractGameAction)new DamageAction((AbstractCreature) AbstractDungeon.player, new DamageInfo((AbstractCreature)AbstractDungeon.player, damageAmount/3, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
         return damageAmount;

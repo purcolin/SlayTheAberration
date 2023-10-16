@@ -25,6 +25,12 @@ public class FlightDescentBossPower extends AbstractPower {
     public static final String[] DESCRIPTIONS;
     private AbstractCreature source;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(FlightDescentBossPower.class.getSimpleName()+".png"));
+
+    public FlightDescentBossPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
+
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(FlightDescentBossPower.class.getSimpleName()+"32.png"));
 
     public FlightDescentBossPower(AbstractCreature owner, AbstractCreature source) {

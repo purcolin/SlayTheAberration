@@ -3,6 +3,7 @@ package aberration.packs.SeabornDescent;
 import aberration.AberrationMod;
 import aberration.packs.AbstractAberrationPack;
 import aberration.utils.TextureLoader;
+import basemod.BaseMod;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -15,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static aberration.AberrationMod.GetPowerClass;
 import static aberration.AberrationMod.makePowerPath;
 
 public class SeabornDescentPack extends AbstractAberrationPack{
@@ -34,7 +36,9 @@ public class SeabornDescentPack extends AbstractAberrationPack{
         this.card = new SeabornCard();
         this.gene = new SeabornDescentGene();
         this.type = AberrationPackType.BA_GUA;
-        this.bossImage = TextureLoader.getTexture((makePowerPath(StringUtils.substringBefore(SeabornDescentPack.class.getName(), "Pack")+"Boss.png")));
+        this.bossImage = TextureLoader.getTexture((makePowerPath(this.getClass().getSimpleName().replace("Pack","Boss.png"))));
+        this.MonsterPower = GetPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","MonsterPower")));
+        this.BossPower = GetPowerClass(AberrationMod.makeID(this.getClass().getSimpleName().replace("Pack","BossPower")));
     }
     public void ApplyMonsterPower(AbstractMonster m){
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, m, new SeabornDescentMonsterPower(m, m)));

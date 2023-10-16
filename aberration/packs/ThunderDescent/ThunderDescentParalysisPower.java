@@ -31,7 +31,10 @@ public class ThunderDescentParalysisPower extends AbstractPower {
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ThunderDescentParalysisPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ThunderDescentParalysisPower.class.getSimpleName()+"32.png"));
 
-
+    public ThunderDescentParalysisPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
 
     public ThunderDescentParalysisPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.name = NAME;

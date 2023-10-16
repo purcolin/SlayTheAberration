@@ -28,7 +28,10 @@ public class ColdDescentColdPower extends AbstractPower {
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ColdDescentColdPower.class.getSimpleName()+"32.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ColdDescentColdPower.class.getSimpleName()+"32.png"));
 
-
+    public ColdDescentColdPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
 
     public ColdDescentColdPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.name = NAME;

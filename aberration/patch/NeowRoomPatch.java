@@ -22,7 +22,5 @@ public class NeowRoomPatch {
     public static void Prefix(NeowRoom __instance) {
 //        logger.info("=========================  neow room hook =========================");
 //        logger.info(AbstractDungeon.screen);
-
-//        logger.info(((NeowEvent) __instance.event).screenNum);
     }
 }

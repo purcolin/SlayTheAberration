@@ -19,5 +19,7 @@
     <orderEntry type="library" name="RelicUpgradeLib" level="project" />
     <orderEntry type="library" name="AscensionManager" level="project" />
     <orderEntry type="library" name="yUi" level="project" />
+    <orderEntry type="library" name="RelicStats" level="project" />
+    <orderEntry type="library" name="intentgraph" level="project" />
   </component>
 </module>

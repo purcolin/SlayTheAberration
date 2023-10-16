@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,6 +25,8 @@ public class AbstractAberrationPack {
     public AberrationPackType type;
     public AbstractInjectedCard card;
     public AbstractGene gene;
+    public static Class<? extends AbstractPower> MonsterPower;
+    public static Class<? extends AbstractPower> BossPower;
 
     public boolean Void = false;
     public ArrayList<Integer> validDungeons = new ArrayList<Integer>();

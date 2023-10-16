@@ -21,6 +21,12 @@ public class DeepDescentBossPower extends AbstractPower {
     private static final PowerStrings powerStrings;
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
+
+    public DeepDescentBossPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
+
     private AbstractCreature source;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(DeepDescentBossPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(DeepDescentBossPower.class.getSimpleName()+"32.png"));

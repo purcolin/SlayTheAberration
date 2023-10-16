@@ -29,6 +29,12 @@ public class CurseDescentBossPower extends AbstractPower {
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
     private AbstractCreature source;
+
+    public CurseDescentBossPower() {
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
+
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(CurseDescentBossPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(CurseDescentBossPower.class.getSimpleName()+"32.png"));
     public CurseDescentBossPower(AbstractCreature owner, AbstractCreature source) {

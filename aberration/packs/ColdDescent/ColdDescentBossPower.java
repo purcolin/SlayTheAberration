@@ -19,7 +19,7 @@ import static com.megacrit.cardcrawl.helpers.ImageMaster.loadImage;
 
 public class ColdDescentBossPower extends AbstractPower {
 
-    public static final String POWER_ID = AberrationMod.makeID(ColdDescentBossPower .class.getSimpleName());
+    public static final String POWER_ID = AberrationMod.makeID(ColdDescentBossPower.class.getSimpleName());
     private static final Logger logger = LogManager.getLogger(ColdDescentBossPower.class.getName());
     private static final PowerStrings powerStrings;
     public static final String NAME;
@@ -27,6 +27,10 @@ public class ColdDescentBossPower extends AbstractPower {
     private AbstractCreature source;
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(ColdDescentBossPower.class.getSimpleName()+".png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(ColdDescentBossPower.class.getSimpleName()+"32.png"));
+    public ColdDescentBossPower(){
+        this.name = NAME;
+        this.ID = POWER_ID;
+    }
     public ColdDescentBossPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;
