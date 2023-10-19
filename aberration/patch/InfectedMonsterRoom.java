@@ -1,4 +1,5 @@
 package aberration.patch;
+import aberration.AberrationMod;
 import aberration.relics.injector;
 import aberration.rewards.InfectedBlood;
 import aberration.utils.AberrationHooks;
@@ -112,8 +113,8 @@ public class InfectedMonsterRoom extends MonsterRoom {
 
                         AbstractDungeon.actionManager.addToBottom(new GainEnergyAndEnableControlsAction(AbstractDungeon.player.energy.energyMaster));
 //                        logger.info(AbstractRoomInfectedPatch.infected.get(this));
-                        AberrationHooks ah = new AberrationHooks();
-                        ah.PreStartBattle(this);
+
+                        AberrationMod.AberrationHook.PreStartBattle(this);
                         BaseMod.publishStartBattle(this);
                         AbstractDungeon.player.applyStartOfCombatPreDrawLogic();
                         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, AbstractDungeon.player.gameHandSize));

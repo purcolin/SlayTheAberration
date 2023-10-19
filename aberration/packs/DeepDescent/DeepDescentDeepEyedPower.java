@@ -52,6 +52,9 @@ public class DeepDescentDeepEyedPower extends AbstractPower {
         this.owner = owner;
         this.source = source;
         this.amount = -1;
+        if(this.amount > -1){
+            this.amount = -1;
+        }
         this.updateDescription();
         this.type = PowerType.DEBUFF;
         this.isTurnBased = true;

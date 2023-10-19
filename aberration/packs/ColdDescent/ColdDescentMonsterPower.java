@@ -40,6 +40,9 @@ public class ColdDescentMonsterPower extends AbstractPower {
         this.owner = owner;
         this.source = source;
         this.amount = -1;
+        if(this.amount > -1){
+            this.amount = -1;
+        }
         this.priority = 100;
         logger.info(this.ID);
         this.updateDescription();

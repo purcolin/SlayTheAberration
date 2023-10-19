@@ -53,6 +53,9 @@ public class WormDescentMonsterPower extends AbstractPower {
         this.source = source;
         this.priority = 100;
         this.amount = -1;
+        if(this.amount > -1){
+            this.amount = -1;
+        }
         this.updateDescription();
         this.type = PowerType.BUFF;
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);

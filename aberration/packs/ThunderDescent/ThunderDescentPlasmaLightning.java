@@ -21,6 +21,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.orbs.Plasma;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import com.megacrit.cardcrawl.vfx.combat.LightningOrbActivateEffect;
@@ -29,7 +30,7 @@ import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect.OrbFlareColor;
 import java.util.Iterator;
 
-public class ThunderDescentPlasmaLightning extends AbstractOrb {
+public class ThunderDescentPlasmaLightning extends Lightning {
     public static final String ORB_ID = "aberration:ThunderDescentPlasmaLightning";
     private static final OrbStrings orbString;
     private float vfxTimer = 1.0F;

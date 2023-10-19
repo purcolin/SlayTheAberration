@@ -58,15 +58,16 @@ public class AberrationMod implements PostInitializeSubscriber,
         PostDrawSubscriber
 {
     public static final Logger logger = LogManager.getLogger(AberrationMod.class.getName());
-    public static ArrayList<AbstractAberrationPack> CurrentAberrationPacks = new ArrayList();
-    public static ArrayList<AbstractAberrationPack> allPacks = new ArrayList();
-    public static ArrayList<String> allAberrationPowers = new ArrayList();
+    public static ArrayList<AbstractAberrationPack> CurrentAberrationPacks = new ArrayList<>();
+    public static ArrayList<AbstractAberrationPack> allPacks = new ArrayList<>();
+    public static ArrayList<String> allAberrationPowers = new ArrayList<>();
 
-    public static ArrayList<AbstractAberrationPack> activatedPacks = new ArrayList();
+    public static ArrayList<AbstractAberrationPack> activatedPacks = new ArrayList<>();
     public static HashMap<String, AbstractAberrationPack> packsByID;
     public static HashMap<String, AbstractPower> powersByID;
+    public static AberrationHooks AberrationHook;
 
-    public static Boolean IsShowAberrationScreen = false;
+    public static Boolean ShowaberrationScreen = false;
     public static ArrayList<AbstractGene> geneList = new ArrayList<>();
     private static String modID = "aberration";
 
@@ -185,7 +186,7 @@ public class AberrationMod implements PostInitializeSubscriber,
     @Override
     public void receivePostDungeonInitialize() {
         logger.info("receive post dungeon initialize");
-        IsShowAberrationScreen = false;
+        ShowaberrationScreen = false;
 
     }
 
@@ -232,11 +233,11 @@ public class AberrationMod implements PostInitializeSubscriber,
             gene.loading();
             return gene.name;
         }).collect(Collectors.toList()));
-        AberrationHooks ab = new AberrationHooks(new Random(Settings.seed));
-        ab.SetRng(new Random(Settings.seed));
-        logger.info("randompack:"+ getRandomPackFromAll(ab.AberrationRng).name);
+        AberrationHook = new AberrationHooks(new Random(Settings.seed));
+        AberrationHook.SetRng(new Random(Settings.seed));
+        logger.info("randompack:"+ getRandomPackFromAll(AberrationHook.AberrationRng).name);
         this.activatedPacks = allPacks;
-        this.CurrentAberrationPacks = getNPacks(ab.AberrationRng,3);
+        this.CurrentAberrationPacks = getNPacks(AberrationHook.AberrationRng,3);
         this.CurrentAberrationPacks.add(new VoidPack());
         logger.info("Full list of current packs: " + this.CurrentAberrationPacks.stream().map((pack) -> {
             return pack.name;

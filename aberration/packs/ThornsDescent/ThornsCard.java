@@ -40,6 +40,7 @@ public class ThornsCard extends AbstractInjectedCard {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
+        card.exhaust = true;
     }
     public String modifyDescription(String rawDescription, AbstractCard card) {
         return rawDescription + TEXT[2];

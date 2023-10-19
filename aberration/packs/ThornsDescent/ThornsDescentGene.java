@@ -34,9 +34,15 @@ public class ThornsDescentGene extends AbstractGene {
         Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
         while(var1.hasNext()) {
             AbstractMonster m = (AbstractMonster) var1.next();
-            AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new ApplyPowerAction(m,AbstractDungeon.player,new ThornsDescentThornsedPower(m,AbstractDungeon.player,1),1));
+            AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new ApplyPowerAction(m,AbstractDungeon.player,new ThornsDescentThornsedPower(m,AbstractDungeon.player),-1));
         }
 
+
+    }
+
+    @Override
+    public void onSpawnMonster(AbstractMonster m, AbstractRelic r) {
+        AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new ApplyPowerAction(m,AbstractDungeon.player,new ThornsDescentThornsedPower(m,AbstractDungeon.player),-1));
 
     }
     static {

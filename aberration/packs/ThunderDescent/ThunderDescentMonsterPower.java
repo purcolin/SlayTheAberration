@@ -100,9 +100,9 @@ public class ThunderDescentMonsterPower extends AbstractPower {
 
 
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        this.flashWithoutSound();
         if(AbstractDungeon.player.hasPower(ThunderDescentParalysisPower.POWER_ID)){
             ++this.amount;
+            this.flashWithoutSound();
         }
         if (this.amount == this.baseThreshold-this.paralysis) {
             this.AddCostToRandomCard();

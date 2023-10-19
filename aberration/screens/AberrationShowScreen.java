@@ -72,7 +72,7 @@ public class AberrationShowScreen extends CustomScreen {
     public void reopen()
     {
         AbstractDungeon.overlayMenu.showBlackScreen();
-        AberrationMod.IsShowAberrationScreen = true;
+        AberrationMod.ShowaberrationScreen = true;
         AbstractDungeon.screen = curScreen();
         AbstractDungeon.isScreenUp = true;
         AbstractAberrationPack p;

@@ -24,7 +24,7 @@ public class NeowRoomPatch {
     public static void Prefix(NeowRoom __instance) {
 //        logger.info("=========================  neow room hook =========================");
 //        logger.info(AbstractDungeon.screen);
-        if(!AberrationMod.IsShowAberrationScreen){
+        if(!AberrationMod.ShowaberrationScreen){
             AbstractDungeon.isScreenUp = true;
             BaseMod.openCustomScreen(AberrationShowScreen.Enum.ABERRATION_SHOW_SCREEN, AberrationMod.CurrentAberrationPacks);
         }

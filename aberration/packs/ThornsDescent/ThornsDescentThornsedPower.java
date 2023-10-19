@@ -39,14 +39,14 @@ public class ThornsDescentThornsedPower extends AbstractPower {
         this.updateDescription();
     }
 
-    public ThornsDescentThornsedPower(AbstractCreature owner, AbstractCreature source, int amount) {
+    public ThornsDescentThornsedPower(AbstractCreature owner, AbstractCreature source) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.source = source;
-        this.amount = amount;
-        if (this.amount >= 1) {
-            this.amount = 1;
+        this.amount = -1;
+        if (this.amount >= -1) {
+            this.amount = -1;
         }
         this.updateDescription();
         this.type = PowerType.BUFF;
@@ -60,7 +60,7 @@ public class ThornsDescentThornsedPower extends AbstractPower {
             this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
     public void wasHPLost(DamageInfo info, int damageAmount) {
-        if (info.type != DamageInfo.DamageType.NORMAL && damageAmount > 0) {
+        if (info.type == DamageInfo.DamageType.THORNS && damageAmount > 0) {
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new ThornsPower(AbstractDungeon.player,damageAmount/3)));
         }
 

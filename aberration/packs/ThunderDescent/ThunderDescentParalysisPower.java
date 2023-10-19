@@ -59,9 +59,9 @@ public class ThunderDescentParalysisPower extends AbstractPower {
     public void updateDescription() {
         if (this.owner != null) {
             if(AberrationMod.CurrentRoomType== AbstractRoom.RoomType.BOSS){
-                this.description = DESCRIPTIONS[0] + (6 - this.amount) + DESCRIPTIONS[1];
-            }else {
                 this.description = DESCRIPTIONS[0] + (3 - this.amount) + DESCRIPTIONS[1];
+            }else {
+                this.description = DESCRIPTIONS[0] + (6 - this.amount) + DESCRIPTIONS[1];
             }
         }else {
             this.description = DESCRIPTIONS[0] + DESCRIPTIONS[2] + DESCRIPTIONS[1];

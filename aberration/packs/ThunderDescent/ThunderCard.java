@@ -39,7 +39,7 @@ public class ThunderCard extends AbstractInjectedCard {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        ++card.cost;
+        card.cost = card.cost+1;
         card.costForTurn = card.cost;
     }
     public String modifyDescription(String rawDescription, AbstractCard card) {

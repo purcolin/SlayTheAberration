@@ -51,7 +51,10 @@ public class SeabornDescentMonsterPower extends AbstractPower {
         this.ID = POWER_ID;
         this.owner = owner;
         this.source = source;
-        this.amount = 0;
+        this.amount = -1;
+        if(this.amount > -1){
+            this.amount = -1;
+        }
         this.priority = 100;
         this.updateDescription();
         this.type = PowerType.BUFF;
