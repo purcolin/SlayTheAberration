@@ -97,7 +97,7 @@
     ]
   },
   "aberration:ThunderDescentMonsterPower": {
-    "NAME": "雷怪",
+    "NAME": "电离",
     "DESCRIPTIONS": [
       "每回合若造成伤害，则给予1层 #y麻痹 NL "," #b你现在没有麻痹"," #p已打出","张牌。"
     ]
@@ -150,6 +150,32 @@
       "将所受到的 #y攻击 伤害降低 #b50% 。 如果在一个回合内被 #y攻击 伤害 #b",
       " 次，就会取消。取消后不会眩晕。"
     ]
-  }
+  },
+  "aberration:EarthDescentMonsterPower": {
+    "NAME": "石魔",
+    "DESCRIPTIONS": [
+      "获得3层飞行，若已有飞行则改为一层"
+    ]
+  },
+    "aberration:EarthDescentBossPower": {
+      "NAME": "夔之岩觉",
+      "DESCRIPTIONS": [
+        "被”翼龙“应龙以巽之力感染的畸变怪物。 NL 每回合额外获得2层飞行，每次失去飞行前只能获得一次","应龙之翔，云雾滃然而从，震风薄怒，万空不约而号，物有自然相动耳。"
+      ]
+    },
+    "aberration:EarthDescentArmorPower": {
+      "NAME": "护甲",
+      "DESCRIPTIONS": [
+        "将所受到的 #y攻击 伤害降低 #b50% 。 如果在一个回合内被 #y攻击 伤害 #b",
+        " 次，就会取消。取消后不会眩晕。"
+      ]
+    },
+    "aberration:EarthDescentArmorPiercePower": {
+      "NAME": "穿甲",
+      "DESCRIPTIONS": [
+        "将所受到的 #y攻击 伤害降低 #b50% 。 如果在一个回合内被 #y攻击 伤害 #b",
+        " 次，就会取消。取消后不会眩晕。"
+      ]
+    }
 }
 

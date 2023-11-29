@@ -60,7 +60,6 @@ public class AbstractAberrationPack {
                 }
             }
             AberrationMod.AddGene(this.gene);
-
             player.getRelic("aberration:AberrationGene").updateDescription(player.chosenClass);
             return true;
         }else {

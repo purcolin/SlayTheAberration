@@ -30,6 +30,11 @@ public class DeepDescentDeepPower extends AbstractPower {
     public static final String[] DESCRIPTIONS;
     private AbstractCreature source;
 
+
+    private Boolean tried = false;
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(DeepDescentDeepPower.class.getSimpleName()+".png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(DeepDescentDeepPower.class.getSimpleName()+"32.png"));
+
     public DeepDescentDeepPower() {
         this.name = NAME;
         this.ID = POWER_ID;
@@ -37,11 +42,6 @@ public class DeepDescentDeepPower extends AbstractPower {
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
         this.updateDescription();
     }
-
-    private Boolean tried = false;
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(DeepDescentDeepPower.class.getSimpleName()+".png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(DeepDescentDeepPower.class.getSimpleName()+"32.png"));
-
 
 
     public DeepDescentDeepPower(AbstractCreature owner, AbstractCreature source, int amount) {
@@ -58,7 +58,6 @@ public class DeepDescentDeepPower extends AbstractPower {
         this.isTurnBased = true;
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-
     }
 
     public void updateDescription() {
@@ -71,7 +70,6 @@ public class DeepDescentDeepPower extends AbstractPower {
             }
         }
         catch(NullPointerException e) {
-            //  处理错误的代码块
             this.description = "For Player:"+DESCRIPTIONS[0]+this.amount+DESCRIPTIONS[1] + " NL For Monster:" +DESCRIPTIONS[2]+this.amount+DESCRIPTIONS[3];
         }
 
@@ -97,9 +95,6 @@ public class DeepDescentDeepPower extends AbstractPower {
     @Override
     public void atEndOfTurn(boolean isPlayer){
         if(!isPlayer){
-            logger.info("deep end!");
-            logger.info(this.owner);
-            logger.info(this.amount);
             if(this.amount == 1){
                 logger.info(this.tried);
                 if(this.tried){
@@ -117,10 +112,9 @@ public class DeepDescentDeepPower extends AbstractPower {
                 this.addToBot(new RemoveMoveAction((AbstractMonster) this.owner));
                 this.addToBot(new ReducePowerAction(this.owner, this.source, POWER_ID, 1));
             }
-
-
         }
     }
+
 
     static {
         powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);

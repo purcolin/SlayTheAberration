@@ -85,5 +85,14 @@
   },
   "aberration:FlightDescentPack": {
     "TEXT": ["巽:生翼", "应龙","purcolin"]
+  },
+  "aberration:EarthCard": {
+    "TEXT": ["石肤", "", "再造成1点伤害"]
+  },
+  "aberration:EarthDescentGene": {
+    "TEXT": ["石肤基因", "你的每次攻击会对目标附加一次来源为目标自身且受你力量、敏捷与集中中最高一项加成的伤害"]
+  },
+  "aberration:EarthDescentPack": {
+    "TEXT": ["坤:石魔", "墨菲特","purcolin"]
   }
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -106,6 +107,7 @@ public class ThunderDescentMonsterPower extends AbstractPower {
         }
         if (this.amount == this.baseThreshold-this.paralysis) {
             this.AddCostToRandomCard();
+            this.addToBot(new ReducePowerAction(AbstractDungeon.player,AbstractDungeon.player,ThunderDescentParalysisPower.POWER_ID,1));
         }
         this.updateDescription();
     }

@@ -1,8 +1,7 @@
-package aberration.packs.DeepDescent;
+package aberration.packs.EarthDescent;
 
 
 import aberration.AberrationMod;
-import aberration.actions.RemoveMoveAction;
 import aberration.packs.AbstractInjectedCard;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.TooltipInfo;
@@ -16,17 +15,15 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import thePackmaster.actions.rippack.ExhaustRandomNonArtCardsAction;
-import thePackmaster.actions.upgradespack.ExhaustRandomPredicateCardAction;
 
 import java.util.List;
 
-public class DeepCard extends AbstractInjectedCard {
-    public static final String ID = AberrationMod.makeID(DeepCard.class.getSimpleName());
-    private static final Logger logger = LogManager.getLogger(DeepCard.class.getName());
+public class EarthCard extends AbstractInjectedCard {
+    public static final String ID = AberrationMod.makeID(EarthCard.class.getSimpleName());
+    private static final Logger logger = LogManager.getLogger(EarthCard.class.getName());
     private static final UIStrings cardStrings;
     public static final String[] TEXT;
-    public DeepCard(){
+    public EarthCard(){
 
     }
 
@@ -69,13 +66,15 @@ public class DeepCard extends AbstractInjectedCard {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        logger.info("cft:"+card.costForTurn);
+        logger.info("c:"+card.cost);
         AbstractMonster monster= AbstractDungeon.getRandomMonster();
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster,AbstractDungeon.player,new DeepDescentDeepPower(monster, AbstractDungeon.player,1)));
-//        AbstractDungeon.actionManager.addToBottom(new ExhaustRandomNonArtCardsAction());
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster,AbstractDungeon.player,new EarthDescentArmorPower(monster, AbstractDungeon.player,1)));
+
     }
     @Override
     public AbstractCardModifier makeCopy() {
-        return new DeepCard();
+        return new EarthCard();
     }
     static {
         cardStrings = CardCrawlGame.languagePack.getUIString(ID);
