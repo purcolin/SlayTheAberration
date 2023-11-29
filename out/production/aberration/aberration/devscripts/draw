@@ -1,0 +1,7 @@
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import basemod.BaseMod;
+import aberration.AberrationMod;
+import aberration.screens.AberrationShowScreen;
+
+AbstractDungeon.isScreenUp = true;
+BaseMod.openCustomScreen(AberrationShowScreen.Enum.ABERRATION_SHOW_SCREEN, AberrationMod.CurrentAberrationPacks);
